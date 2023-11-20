@@ -1,0 +1,44 @@
+<div class="block_aboutshop">
+		{% if settings.footer_aboutshop_title != blank %}
+			<h3 class="title_block title_contact">{{ settings.footer_aboutshop_title }}</h3>
+		{% endif %}
+		<div class="about">
+			{% if settings.footer_aboutshop_des != blank %}
+				{{ settings.footer_aboutshop_des }}
+			{% endif %}
+		</div>
+      <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          {% if settings.footer_aboutshop_title_shop1 != blank %}
+          <h4 class="title_block">{{ settings.footer_aboutshop_title_shop1 }}</h4>
+          {% endif %}
+          <ul class="list__address">
+            {% if settings.footer_aboutshop_address_shop1 != blank %}
+            <li>{{ settings.footer_aboutshop_address_shop1 }}</li>
+            {% endif %}
+            {% if settings.footer_aboutshop_number_shop1 != blank %}
+            <li>{{ settings.footer_aboutshop_number_shop1 }}</li>
+            {% endif %}
+            {% if settings.footer_aboutshop_email_shop1 != blank %}
+            <li>{{ settings.footer_aboutshop_email_shop1 }}</li>
+            {% endif %}
+          </ul>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          {% if settings.footer_aboutshop_title_shop2 != blank %}
+          <h4 class="title_block">{{ settings.footer_aboutshop_title_shop2 }}</h4>
+          {% endif %}
+          <ul class="list__address">
+            {% if settings.footer_aboutshop_address_shop2 != blank %}
+            <li>{{ settings.footer_aboutshop_address_shop2 }}</li>
+            {% endif %}
+            {% if settings.footer_aboutshop_number_shop2 != blank %}
+            <li>{{ settings.footer_aboutshop_number_shop2 }}</li>
+            {% endif %}
+            {% if settings.footer_aboutshop_email_shop2 != blank %}
+            <li>{{ settings.footer_aboutshop_email_shop2 }}</li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+</div>

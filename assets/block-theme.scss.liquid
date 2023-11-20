@@ -1,0 +1,478 @@
+//========== Variables ==========//
+$slider-text-color: 				{{ settings.theme_text_color_banner }};
+
+$font-family:						 {{ settings.theme_font_family | remove: 'Google+' | replace: '+', ' ' }};
+$font-family-tertiary  :             {{ settings.theme_font_family_tertiary | remove: 'Google+' | replace: '+', ' ' }};		// font for menu
+$font-family-septenary : 			 {{ settings.theme_font_family_septenary | remove: 'Google+' | replace: '+', ' ' }}; 		// font for slideshow
+$font-family-senary    : 		 	 {{ settings.theme_font_family_senary | remove: 'Google+' | replace: '+', ' ' }};		// font for Price
+$font-icon 	   		   : 			 "FontAwesome";
+
+$theme-font-size: 					{{ settings.theme_font_size }}px;
+$theme-font-size-medium: 			18px;
+//////////////////// Variables defined for Themes + Skins //////////////// 
+$theme-color-default: 			    {{ settings.theme_color_primary }};
+$theme-color-secondary:				{{ settings.theme_color_secondary }};
+$theme-color-tertiary:              {{ settings.theme_color_tertiary }};
+$theme-color-four:					{{ settings.theme_color_four }};
+
+$theme-bg-color:					{{ settings.theme_color_body_bg }};
+
+$theme-text-color:					{{ settings.theme_text_color_primary }};
+$theme-text-color-secondary:		{{ settings.theme_text_color_secondary }};
+$theme-text-color-tertiary:			{{ settings.theme_text_color_tertiary }};
+$theme-text-banner-color:			{{ settings.theme_text_color_banner }};
+
+//-------- BORDERS
+$border-color:						{{ settings.theme_color_borders }};
+$main-border:						1px solid $border-color;
+$main-border-hover:                 1px solid $theme-color-secondary;
+
+//--------- BUTTON
+$theme-button-one-color:      {{ settings.theme_text_color_buttonone }};
+$theme-button-one-bg:       {{ settings.theme_bg_color_buttonone }};
+$theme-button-one-border:     {{ settings.theme_border_color_buttonone }};
+$theme-button-one-hover-color:    {{ settings.theme_text_color_buttonone_hover }};
+$theme-button-one-hover-bg:     {{ settings.theme_bg_color_buttonone_hover }};
+$theme-button-one-hover-border:   {{ settings.theme_border_color_buttonone_hover }};
+$theme-button-two-color:      {{ settings.theme_text_color_buttontwo }};
+$theme-button-two-bg:       {{ settings.theme_bg_color_buttontwo }};
+$theme-button-two-border:     {{ settings.theme_border_color_buttontwo }};
+$theme-button-two-hover-color:    {{ settings.theme_text_color_buttontwo_hover }};
+$theme-button-two-hover-bg:     {{ settings.theme_bg_color_buttontwo_hover }};
+$theme-button-two-hover-border:   {{ settings.theme_border_color_buttontwo_hover }};
+
+//-- Mixins ===============================//
+@mixin box-shadow($shadow...) {
+	-webkit-box-shadow: $shadow; // iOS <4.3 & Android <4.1
+	box-shadow: $shadow;
+}
+@mixin transform($arguments){
+   -webkit-transform: $arguments;
+   -moz-transform:    $arguments;
+   -ms-transform:     $arguments;
+   -o-transform:      $arguments;
+}
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: ($opacity * 100);
+  filter: #{alpha(opacity=$opacity-ie)};
+}
+@mixin clearfix() {
+    &:before, &:after {
+        content: " "; // 1
+        display: table; // 2
+    }
+    &:after {
+        clear: both;
+    }
+}
+@mixin rgba($colour, $alpha)
+{
+   $alphaColour: hsla(hue($colour), saturation($colour), lightness($colour), $alpha);
+   $ieAlphaColour: argb($alphaColour);   
+   background-color: $colour; 
+   background-color: $alphaColour;       
+   zoom: 1; 
+   background-color: transparent\9;   
+   
+   
+}
+// Animations
+@mixin animation($animation) {
+    -webkit-animation: $animation;
+            animation: $animation;
+}
+@mixin animation-name($name) {
+    -webkit-animation-name: $name;
+            animation-name: $name;
+}
+@mixin animation-duration($duration) {
+    -webkit-animation-duration: $duration;
+            animation-duration: $duration;
+}
+@mixin animation-timing-function($timing-function) {
+    -webkit-animation-timing-function: $timing-function;
+            animation-timing-function: $timing-function;
+}
+@mixin animation-delay($delay) {
+    -webkit-animation-delay: $delay;
+            animation-delay: $delay;
+}
+@mixin animation-iteration-count($iteration-count) {
+    -webkit-animation-iteration-count: $iteration-count;
+            animation-iteration-count: $iteration-count;
+}
+@mixin animation-direction($direction) {
+    -webkit-animation-direction: $direction;
+            animation-direction: $direction;
+}
+@mixin animation-fill-mode($animation-fill-mode){
+    -webkit-animation-fill-mode: $animation-fill-mode;
+    -moz-animation-fill-mode: $animation-fill-mode;
+    -ms-animation-fill-mode: $animation-fill-mode;
+    -o-animation-fill-mode: $animation-fill-mode;
+    animation-fill-mode: $animation-fill-mode;
+}
+@mixin transition($transition...) {
+    -webkit-transition: $transition;
+            transition: $transition;
+}
+@mixin content-animation($animation-name) {
+    @if $animation-name == bounce {
+        0%, 20%, 53%, 80%, 100% {-webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);-webkit-transform: translate3d(0,0,0);transform: translate3d(0,0,0);}
+        40%, 43% {-webkit-transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);-webkit-transform: translate3d(0, -30px, 0);transform: translate3d(0, -30px, 0);}
+        70% {-webkit-transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);-webkit-transform: translate3d(0, -15px, 0);transform: translate3d(0, -15px, 0);}
+        90% {-webkit-transform: translate3d(0,-4px,0);transform: translate3d(0,-4px,0);}
+    } @else if $animation-name == bounceIn {
+        0%, 20%, 40%, 60%, 80%, 100% {-webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);}
+        0% {opacity: 0;-webkit-transform: scale3d(.3, .3, .3);transform: scale3d(.3, .3, .3);}
+        20% {-webkit-transform: scale3d(1.1, 1.1, 1.1);transform: scale3d(1.1, 1.1, 1.1);}
+        40% {-webkit-transform: scale3d(.9, .9, .9);transform: scale3d(.9, .9, .9);}
+        60% {opacity: 1;-webkit-transform: scale3d(1.03, 1.03, 1.03);transform: scale3d(1.03, 1.03, 1.03);}
+        80% {-webkit-transform: scale3d(.97, .97, .97);transform: scale3d(.97, .97, .97);}
+        100% {opacity: 1;-webkit-transform: scale3d(1, 1, 1);transform: scale3d(1, 1, 1);}
+    } @else if $animation-name == bounceInDown {
+        0%, 60%, 75%, 90%, 100% {-webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);}
+        0% {opacity: 0;-webkit-transform: translate3d(0, -3000px, 0);transform: translate3d(0, -3000px, 0);}
+        60% {opacity: 1;-webkit-transform: translate3d(0, 25px, 0);transform: translate3d(0, 25px, 0);}
+        75% {-webkit-transform: translate3d(0, -10px, 0);transform: translate3d(0, -10px, 0);}
+        90% {-webkit-transform: translate3d(0, 5px, 0);transform: translate3d(0, 5px, 0);}
+        100% {-webkit-transform: none;transform: none;}
+    } @else if $animation-name == bounceInLeft {
+        0%, 60%, 75%, 90%, 100% {-webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);}
+        0% {opacity: 0;-webkit-transform: translate3d(-3000px, 0, 0);transform: translate3d(-3000px, 0, 0);}
+        60% {opacity: 1;-webkit-transform: translate3d(25px, 0, 0);transform: translate3d(25px, 0, 0);}
+        75% {-webkit-transform: translate3d(-10px, 0, 0);transform: translate3d(-10px, 0, 0);}
+        90% {-webkit-transform: translate3d(5px, 0, 0);transform: translate3d(5px, 0, 0);}
+        100% {-webkit-transform: none;transform: none;}
+    } @else if $animation-name == bounceInRight {
+        0%, 60%, 75%, 90%, 100% {-webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);}
+        0% {opacity: 0;-webkit-transform: translate3d(3000px, 0, 0);transform: translate3d(3000px, 0, 0);}
+        60% {opacity: 1;-webkit-transform: translate3d(-25px, 0, 0);transform: translate3d(-25px, 0, 0);}
+        75% {-webkit-transform: translate3d(10px, 0, 0);transform: translate3d(10px, 0, 0);}
+        90% {-webkit-transform: translate3d(-5px, 0, 0);transform: translate3d(-5px, 0, 0);}
+        100% {-webkit-transform: none;transform: none;}
+    } @else if $animation-name == bounceInUp {
+        0%, 60%, 75%, 90%, 100% {-webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);}
+        0% {opacity: 0;-webkit-transform: translate3d(0, 3000px, 0);transform: translate3d(0, 3000px, 0);}
+        60% {opacity: 1;-webkit-transform: translate3d(0, -20px, 0);transform: translate3d(0, -20px, 0);}
+        75% {-webkit-transform: translate3d(0, 10px, 0);transform: translate3d(0, 10px, 0);}
+        90% {-webkit-transform: translate3d(0, -5px, 0);transform: translate3d(0, -5px, 0);}
+        100% {-webkit-transform: translate3d(0, 0, 0);transform: translate3d(0, 0, 0);}
+    } @else if $animation-name == fade {
+        0% {opacity: 0;}
+        100% {opacity: 1;}
+    }
+}
+@mixin keyframes-animation($animation-name){
+    @-webkit-keyframes $animation-name{
+        @content;
+    }
+    @-ms-keyframes $animation-name{
+        @content;
+    }
+    @-moz-keyframes $animation-name{
+        @content;
+    }
+    @keyframes $animation-name{
+        @content;
+    }
+}
+@mixin keyframes($name : empty){
+    @include keyframes-animation($name){
+        @include content-animation($name);
+    };
+    .#{$name}{
+        @include animation-name($name);
+        @include animation-duration(1s);
+        @include animation-fill-mode(backwards);
+        @include animation-iteration-count(none);
+    }
+}
+
+// Call keyframes
+@include keyframes(bounceIn);
+@include keyframes(bounceInDown);
+@include keyframes(bounceInLeft);
+@include keyframes(bounceInRight);
+@include keyframes(bounceInUp);
+@include keyframes(fade);
+
+{% if settings.slider_home_enable %}
+//-- Slideshow ========================================= //
+    #slideshow{
+        .slider-container{
+            overflow: hidden;
+            background-color: {{ settings.slider_background_color }};
+        }
+    }
+    .slider-container{
+        margin: 0px;
+        background-color: transparent;
+        position: relative;
+        width: 100%;
+    }
+    .leo-viewport{
+        max-height: 2000px;
+        @include transition(all 1s ease 0s);
+      	direction: ltr !important;
+    }
+    .slides, .leo-control-nav, .leo-direction-nav {
+        margin: 0px;
+        padding: 0px;
+        list-style: outside none none;
+    }
+    #sliderlayer li{
+        position: relative;
+        margin: 0px;
+        padding: 0px;
+    }
+    .slide-caption{
+        position: absolute;
+        margin: 0px auto;
+        left: 0px;
+        right: 0px;
+        > div {
+            opacity:0;
+            @include transition(all 0.5s ease 0s);
+            .leo-active-slide &{
+                opacity:1;
+                @include transition(all 0.5s ease 0s);
+            }
+        }
+        .text_first{
+            font-size: 30px;
+            color: #000;
+            text-shadow: none;
+            font-family: $font-family-septenary;
+            font-weight: 200;
+            font-style: normal;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            line-height: 35px;
+            padding:0px;
+            margin: 0px 40px;
+			/* background: url({{'bulet-slide.png' | asset_url }}) bottom center no-repeat; */
+        }
+        h3{
+            font-family: $font-family-septenary;
+            font-weight: 700;
+          	font-size: 120px;
+            text-transform: uppercase;
+          	letter-spacing:15px;
+          	line-height:150px;
+            color:$theme-color-default;
+            letter-spacing: 0px; 
+            margin: 0px 40px;
+            padding: 0px;
+        }
+        p{
+            color: $slider-text-color;
+            font-size: 13px;
+            font-family: $font-family-septenary;
+            line-height: 18px;
+            padding: 10px 40px;
+          	letter-spacing: 0;
+        }
+        .btn-slide{
+            border: 1px solid $theme-color-default;
+          	background: $theme-color-default;
+            color: $slider-text-color;
+            text-transform: uppercase;
+            margin: 5px 40px 0px 40px;
+            padding: 0px 15px;
+            line-height: 32px;
+            font-family: $font-family-septenary;
+            font-size: 12px;
+            font-weight: 300;
+        }
+    }
+    {% for i in (1..6) %}
+        {% capture slide %}slide_{{ i }}{% endcapture %}
+        {% capture capture_top %}slider_caption_top_{{ i }}{% endcapture %}
+        {% capture capture_align %}slider_caption_{{ i }}{% endcapture %}
+        {% capture slide_caption %}caption_{{ i }}{% endcapture %}
+
+        {% capture capture_animation_title %}slideshow_title_effect_{{ i }}{% endcapture %}
+        {% capture capture_delay_title %}slideshow_title_delay_{{ i }}{% endcapture %}
+
+        {% capture capture_animation_des %}slideshow_des_effect_{{ i }}{% endcapture %}
+        {% capture capture_delay_des %}slideshow_des_delay_{{ i }}{% endcapture %}
+
+        {% capture capture_animation_button %}slideshow_button_effect_{{ i }}{% endcapture %}
+        {% capture capture_delay_button %}slideshow_button_delay_{{ i }}{% endcapture %}
+
+        {% capture capture_animation_txtf %}slideshow_txtfirst_effect_{{ i }}{% endcapture %}
+        {% capture capture_delay_txtf %}slideshow_txtfirst_delay_{{ i }}{% endcapture %}        
+
+        {% if settings[slide] %}
+            .{{slide_caption}}{
+                {% if settings[capture_top] != blank %}
+                    top: {{settings[capture_top]}};
+                {% endif %}
+              	{% if settings[capture_align] == 'left' %}
+              		left: 10%;
+              		right: auto;
+              	{% elsif settings[capture_align] == 'right' %}
+              		left: auto;
+              		right: 10%;
+              	{% else %}
+              		text-align: center;
+              	{% endif %}
+                .text_first{
+                    background-position: bottom {{ settings[capture_align] }};
+                }
+            }
+            .leo-active-slide .{{slide_caption}}  h3{
+                @extend .{{ settings[capture_animation_title] }};
+                @include animation-delay({{ settings[capture_delay_title] }});
+            }
+            .leo-active-slide .{{slide_caption}}  p{
+                @extend .{{ settings[capture_animation_des] }};
+                @include animation-delay({{ settings[capture_delay_des] }});
+            }
+            .leo-active-slide .{{slide_caption}}  a{
+                @extend .{{ settings[capture_animation_button] }};
+                @include animation-delay({{ settings[capture_delay_button] }});
+            }
+            .leo-active-slide .{{slide_caption}} .text_first{
+                @extend .{{ settings[capture_animation_txtf] }};
+                @include animation-delay({{ settings[capture_delay_txtf] }});
+            }
+        {% endif %}
+    {% endfor %}
+    {% if settings.slider_type_Nav == "bullet" %}
+        .leo-control-nav{
+            width: 100%;
+            position: absolute;
+            bottom: 20px;
+            text-align: center;
+            li{
+                position: relative;
+                margin: 0px 6px;
+                display: inline-block;
+                a{
+                    position: relative;
+                    cursor: pointer;
+                    font-size: 0px;
+                    width: 20px;
+                    height: 20px;
+                    display: block;
+                  	border-radius:100%;
+                  	border:2px solid rgba(255,255,255,0);
+                  	@include transition(all 0.3s ease 0s);
+                    //background: url("{{ "list-icon.png" | asset_url }}") no-repeat scroll 0px -54px transparent;
+                    &:before{
+                      content:"";
+                      position:absolute;
+                      width:100%;
+                      top:0;
+                      left:0;
+                      height:100%;
+                      
+                      border-radius:100%;
+                      background-color:#fff;
+                      @include transition(all 0.3s ease 0s);
+                    }
+                    &.leo-active{
+                        //background-position: 0px -74px;
+                      border:2px solid rgba(255,255,255,1);
+                      
+                      &:before{
+                        @include transform(scale(0.4));
+                      }
+                    }
+                }
+            }
+        }
+    {% elsif settings.slider_type_Nav == "none" %}
+        .leo-control-nav{
+            display: none;
+        }
+    {% endif %}
+    {% if settings.slider_style_arrows == "none" %}
+        .leo-direction-nav{
+            display: none;
+        }
+    {% elsif settings.slider_style_arrows == "nextpreview" %}
+        .leo-direction-nav{
+            a{
+                position: absolute;
+                top: 50%;
+                margin: -22px 0px 0px 0px;
+              	@include opacity(0);
+                display: block;
+                cursor: pointer;
+                font-size: 0px;
+                &.leo-prev{
+                    left: 0px;
+                    right: auto;
+                    width:54px;
+                  	height:54px;
+                    @include transition(all 0.35s ease);
+                  	@include box-shadow(0 0 0 2px #000000 inset);
+                    .slider-container:hover &{
+                        left: 20px;
+                      	@include opacity(1);
+                    }
+                    &:before{
+                        content: "\f104";
+                      	font-family: $font-icon;
+                      	font-size: 20px;
+                        position:absolute;
+                        top: 0;
+                        right: 0px;
+                        height: 100%;
+                        width: 100%;
+                      	line-height: 54px;
+                      	text-align: center;
+                      	@include transition(all 0.35s ease);
+                      	color:#000;
+                    }
+                  	&:hover{
+                    	border-left-color: $theme-color-secondary;;
+                      @include box-shadow(0 0 0 30px #000000 inset);
+                      	&:before{
+                        	color: #ffffff;
+                          	@include transition(all 0.35s ease);
+                        }
+                    }
+                }
+                &.leo-next{
+                    right: 0px;
+                    left: auto;
+                    width:54px;
+                  	height:54px;
+                    @include transition(all 0.35s ease);
+                  	@include box-shadow(0 0 0 2px #000000 inset);
+                    .slider-container:hover &{
+                        right: 20px;
+                      	@include opacity(1);
+                    }
+                    &:before{
+                        content: "\f105";
+                      	font-family: $font-icon;
+                      	font-size: 20px;
+                        position:absolute;
+                         height: 100%;
+                        width: 100%;
+                      	line-height: 54px;
+                      	text-align: center;
+                      	@include transition(all 0.35s ease);
+                      	color:#000;
+                    }
+                  	&:hover{
+                    	border-left-color: $theme-color-secondary;;
+                      @include box-shadow(0 0 0 30px #000000 inset);
+                      	&:before{
+                        	color: #ffffff;
+                          	@include transition(all 0.35s ease);
+                        }
+                    }
+                }
+            }
+        }
+    {% endif %}
+
+//-- End Slideshow ===================================== //
+{% endif %}

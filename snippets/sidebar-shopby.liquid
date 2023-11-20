@@ -1,0 +1,146 @@
+<!-- SHOP BY Vendor -->
+	{% if settings.shop_by_vendor_enable and collection.all_vendors.size > 0 %}
+		<div class="block block_shopby">
+			{% if settings.shop_by_vendor_title != blank %}
+				<div class="title_block">
+					{{ settings.shop_by_vendor_title }}
+				</div>
+			{% endif %}
+			<div class="block_content">
+				<ul id="ul_catalog_vendor" class="list-block list-unstyled">
+					{% for vendor in collection.all_vendors %}
+						{% if collection.current_vendor == vendor %}
+							<li class="active" data-group="{{ settings.shop_by_vendor_title }}" data-handle="{{ collection.current_vendor | handleize }}">
+								{{ vendor | link_to_vendor }}
+							</li>
+						{% else %}
+							<li class="" data-group="{{ settings.shop_by_vendor_title }}">
+								{{ vendor | link_to_vendor }}
+							</li>
+						{% endif %}
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	{% endif %}
+<!-- SHOP BY TYPE -->
+{% if settings.shop_by_type_enable and template == 'collection' %}
+	<div id="shopbytype" class="block block_shopby">
+		{% if settings.shop_by_type_title != blank %}
+			<h4 class="title_block">
+				{{ settings.shop_by_type_title }}
+			</h4>
+		{% endif %}
+		<div class="block_content">
+			<ul class="list-block list-unstyled">
+				{% for type in collection.all_types limit:settings.shop_by_type_number %}
+              		{% if type != blank %}
+                        <li {% if collection.current_type == type %} class="active" {% endif %}>
+                            {{ type | link_to_type }}
+                        </li>
+              		{% endif %}
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+{% endif %}
+<!-- SHOP BY CATALOG -->
+{% if settings.shop_by_catalog_enable and template == 'collection' %}
+	<div id="catalog_block" class="block{% if settings.use_ajax_for_catalog_filter %} ajax-filter{% endif %} block_shopby">
+		{% if settings.shop_by_catalog_title != blank %}
+			<h4 class="title_block">
+				{{ settings.shop_by_catalog_title }}
+			</h4>
+		{% endif %}
+		<div style="" class="block_content">
+          	<!-- SHOP BY Size -->
+			{% if settings.shop_by_size_enable %}
+				<div class="catalog_filters">
+					{% if settings.shop_by_size_title != blank %}
+						<div class="catalog_subtitle_heading">
+							<span class="catalog_subtitle">{{ settings.shop_by_size_title }}</span>
+						</div>
+					{% endif %}
+					<ul id="ul_catalog_size" class="col-md-12 catalog_filter_ul">
+						{% assign list_size = settings.shop_by_size_list | split: ',' %}
+						{% for size in list_size %}
+							{% assign custom_tag = size %}
+							{% if current_tags contains custom_tag %}
+								<li class="advanced-filter active-filter col-md-6" data-group="{{ settings.shop_by_size_title }}" data-handle="{{ size | handleize }}">
+									{{ size | link_to_remove_tag: size }}
+								</li>
+							{% else %}
+                      			{% if collection.tags contains custom_tag %}
+                                    <li class="advanced-filter col-md-6" data-group="{{ settings.shop_by_size_title }}" data-handle="{{ size | handleize }}">
+                                        {{ size | link_to_add_tag: size }}
+                                    </li>
+                      			{% endif %}
+							{% endif %}
+						{% endfor %}
+					</ul>
+				</div>
+			{% endif %}
+          	<!-- SHOP BY Price -->
+			{% if settings.shop_by_price_enable %}
+				<div class="catalog_filters">
+					{% if settings.shop_by_price_title != blank %}
+						<div class="catalog_subtitle_heading">
+							<span class="catalog_subtitle">{{ settings.shop_by_price_title }}</span>
+						</div>
+					{% endif %}
+					<ul id="ul_catalog_price" class="col-md-12 catalog_filter_ul">
+						{% assign list_price = settings.shop_by_price_list | split: ',' %}
+						{% for price in list_price %}
+							{% assign custom_tag = price | strip %}
+							{% if current_tags contains custom_tag %}
+								<li class="advanced-filter active-filter" data-group="{{ settings.shop_by_price_title }}" data-handle="{{ price | handleize }}">
+									{{ price | link_to_remove_tag: price }}
+								</li>
+							{% else %}
+                      			{% if collection.tags contains custom_tag %}
+                      				<li class="advanced-filter" data-group="{{ settings.shop_by_price_title }}" data-handle="{{ price | handleize }}">
+                                        {{ price | link_to_add_tag: price }}
+                                    </li>
+                      			{% endif %}
+							{% endif %}
+						{% endfor %}
+					</ul>
+				</div>
+			{% endif %}
+			<!-- SHOP BY Color -->
+			{% if settings.shop_by_color_enable %}
+				<div class="catalog_filters">
+					{% if settings.shop_by_color_title != blank %}
+						<div class="catalog_subtitle_heading">
+							<span class="catalog_subtitle">{{ settings.shop_by_color_title }}</span>
+						</div>
+					{% endif %}
+					<ul id="ul_catalog_color" class="catalog_filter_ul list-unstyled color-group">
+						{% for i in (1..20) %}
+							{% capture color_text %}shop_by_color_text_{{i}}{% endcapture %}
+							{% capture color_image %}color-{{i}}.png{% endcapture %}
+							{% if settings[color_text] != blank %}
+								{% assign custom_tag = settings[color_text] | strip %}
+								{% if current_tags contains custom_tag %}
+									<li class="advanced-filter active-filter" data-group="{{ settings.shop_by_catalog_title }}" data-handle="{{ custom_tag | handleize }}">
+                                      <a href="javascript:void(0);" class="catalog_color" title="{{ settings[color_text] }}">
+                                        <img class="img-responsive" alt="{{ settings[color_text] }}" src="{{ color_image | asset_url }}" />
+                                      </a>
+									</li>
+								{% else %}
+                      				{% if collection.tags contains custom_tag %}
+									<li class="advanced-filter" data-group="{{ settings.shop_by_catalog_title }}" data-handle="{{ custom_tag | handleize }}">
+                                      <a href="javascript:void(0);" class="catalog_color" title="{{ settings[color_text] }}">
+                                        <img class="img-responsive" alt="{{ settings[color_text] }}" src="{{ color_image | asset_url }}" />
+                                      </a>
+									</li>
+                      				{% endif %}
+								{% endif %}
+							{% endif %}
+						{% endfor %}
+					</ul>
+				</div>
+			{% endif %}
+		</div>
+	</div>
+{% endif %}

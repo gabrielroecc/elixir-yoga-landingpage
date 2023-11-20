@@ -1,0 +1,22 @@
+<div class="testimonial-item">
+  	<div class="testimonial-media">
+      	{% if isAvatar %}
+            <div class="t-avatar">
+              	{% if settings[itemLink] != blank %}
+              		<a href="{{ settings[itemLink] }}">
+              	{% endif %}
+                	<img src="{{ itemAvatar | asset_url }}" alt="{{ settings[itemName] }}">
+              	{% if settings[itemLink] != blank %}
+              		</a>
+              	{% endif %}
+            </div>
+      	{% endif %}
+      	<div class="testimonial-body">
+          	<div class="test-des">{{ settings[itemReview] }}</div>
+          	<div class="profile">
+              	<h5>{{ settings[itemName] }}</h5>
+              	<p>{{ settings[itemReadmore] }}</p>
+          	</div>
+      	</div>
+  	</div>
+</div>

@@ -1,0 +1,39 @@
+.container {
+	width: 100%;
+	max-width: 1440px;
+	margin: 0 auto;
+	padding: 0 10px;
+}
+#pageOneApollo {
+	padding: 0;
+	background-image: none;
+}
+.twoContainer #header-main {
+	padding: 1rem;
+}
+.logo-white {
+	filter: brightness(999);
+}
+.twoContainer .container .row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 248px;
+}
+
+.twoContainer #proimage,
+.twoContainer .product_box_2 {
+	width: 100%;
+	max-width: 602px;
+	height: 500px !important;
+	object-fit: cover;
+	margin: 0;
+	display: block;
+}
+.product_box_1 {
+	max-width: 626px;
+}
+*::before,
+*::after {
+	display: none !important;
+}

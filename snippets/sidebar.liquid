@@ -1,0 +1,8 @@
+{% include 'sidebar-categories' %}
+{% include 'sidebar-shopby' %}
+{% if settings.sidebar_bannerone_enable %}
+  	{% assign banner_name = 'sidebar_bannerone.png' %}
+  	{% assign banner_link = settings.sidebar_bannerone_link %}
+  	{% include 'block-bannerhome' %}
+{% endif %}
+{% include 'sidebar-products' with '' %}

@@ -1,0 +1,11 @@
+<div class="shipping">
+  {% if settings.homepage_shipping_title != blank %}
+  <h3 class="shipping__title">{{ settings.homepage_shipping_title }}</h3>
+  {% endif %}
+  {% if settings.homepage_shipping_title_sub != blank %}
+  <h4 class="shipping__title--sub">{{ settings.homepage_shipping_title_sub }}</h4>
+  {% endif %}
+  {% if settings.homepage_shipping_des != blank %}
+  <p class="shipping__des">{{ settings.homepage_shipping_des }}</p>
+  {% endif %}
+</div>

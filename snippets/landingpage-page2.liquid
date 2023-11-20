@@ -1,0 +1,22 @@
+<section class="twoContainer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="boxApollo">
+                    <h3 class="apolloHeading">{{ settings.page2_title }}</h3>
+                    <div class="apolloDescription">
+                      	<p class="swatch-desc">{{ settings.page2_description }}</p>
+                        <p> </p>
+                        <p> </p>
+                        <p class="button-group">
+                          <a href="{{ settings.page2_viewmore_link }}" class="btn btn-left btn-shopnow">{{ settings.page2_viewmore }}</a>
+                          <a href="{{ settings.page2_viewmore_link_2 }}" class="btn btn-right btn-shopnow">{{ settings.page2_viewmore_2 }}</a>
+                      	</p>
+                        {{ pages[settings.page2_page].content }}  
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

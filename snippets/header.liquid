@@ -1,0 +1,42 @@
+{% comment %} <section class="header-container">
+    <div id="topbar">
+        <div class="banner">
+            <div class="container">
+                {% include 'displayBanner' %}
+            </div>
+        </div>
+        <div class="nav">
+            <div class="container">
+                {% include 'displayNav' %}
+            </div>
+        </div>
+    </div>
+    <div id="header-main">
+        <div class="container">
+            <div class="header-wrap">
+                <div class="header-left">
+                    <div id="header_logo">
+                        {% if template == 'index' %}
+                            <h1 class="" itemscope itemtype="http://schema.org/Organization">
+                        {% else %}
+                            <div class="" itemscope itemtype="http://schema.org/Organization">
+                        {% endif %}
+                        {% if settings.logo_use_image %}
+                            <a href="/" itemprop="url">
+                                <img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}" itemprop="logo">
+                            </a>
+                        {% else %}
+                            <a href="/" itemprop="url">{{ shop.name }}</a>
+                        {% endif %}
+                        {% if template != 'index' %}
+                            </div>
+                        {% else %}
+                            </h1>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include 'block-menu' %}
+</section> {% endcomment %}

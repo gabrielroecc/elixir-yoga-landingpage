@@ -1,0 +1,98 @@
+<div class="footer-container">
+    <section id="footertop" class="footer-top"> 
+      <div class="footer_top_wrap">
+        <div class="container">
+          <div class="row {% if settings.lazyload_enable %}wow animated {{ settings.lazyload_manu }}{% endif %}">
+            <div class="col-xs-12 col-sm-12">
+              {% if settings.home_shipping_enable %}
+              {% include 'block-shipping' with '01' %}
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        </div>
+    </section>
+  {% if template contains 'page' and page.handle == 'about-us' %}
+      <div class="container">
+        {% include 'block-testimonial' with '01' %}
+      </div>
+  	<div class="block__contacts">
+      <div class="row no-margin">
+        <div class="no-padding col-xs-12 col-sm-12 col-md-6">
+          {% if settings.footer_store_contact %}
+          {% assign icon_store = settings.footer_store_contact_icon %}
+          {% assign title_store = settings.footer_store_contact_title %}
+          {% assign des_store = settings.footer_store_contact_des %}
+          {% assign btn_store = settings.footer_store_contact_link_text %}
+          {% assign btn_link_store = settings.footer_store_contact_link %}
+          {% assign img_bgstore = 'bg-store.jpg' %}
+          {% include 'block-servicecontact' with '01'%}
+          {% endif %}
+        </div>
+        <div class="no-padding col-xs-12 col-sm-12 col-md-6">
+          {% if settings.footer_store_contact_2 %}
+          {% assign icon_store = settings.footer_store_contact_icon_2 %}
+          {% assign title_store = settings.footer_store_contact_title_2 %}
+          {% assign des_store = settings.footer_store_contact_des_2 %}
+          {% assign btn_store = settings.footer_store_contact_link_text_2 %}
+          {% assign btn_link_store = settings.footer_store_contact_link_2 %}
+          {% assign img_bgstore = '' %}
+          {% include 'block-servicecontact' with '02'%}
+          {% endif %}
+        </div>
+      </div>
+  	</div>
+  	{% endif %}
+    <section id="footercenter" class="footer-center">
+        <div class="container">
+            <div class="footer-center-wrap">
+                <div class="row">
+                  	{% if settings.footer_aboutshop_enable %}
+                    	<div class="col-md-6 col-sm-12 col-xs-12 {% if settings.lazyload_enable %}wow animated {{ settings.lazyload_fopentime }}{% endif %}" data-wow-delay="100ms">
+                      		{% include 'block-aboutshop' %}
+                    	</div>
+                  	{% endif %}
+                    <div class="{% if settings.footer_aboutshop_enable %}col-md-6{% else %}col-md-12{% endif %} col-sm-12 col-xs-12 {% if settings.lazyload_enable %}wow animated {{ settings.lazyload_flinks }}{% endif %}" data-wow-delay="200ms">
+                        <div class="footer_quicklink">
+                            <div class="row">
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    {% if settings.footer_quicklinks_enable %}
+                                        {% assign footerlinks_name = settings.footer_quicklinks_linklist %}
+                                        {% assign footerlinks_title = settings.footer_quicklinks_title %}
+                                        {% include 'block-footerlinks' with '1' %}
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    {% if settings.footer_quicklinks_enable_1%}
+                                        {% assign footerlinks_name = settings.footer_quicklinks_linklist_1 %}
+                                        {% assign footerlinks_title = settings.footer_quicklinks_title_1 %}
+                                        {% include 'block-footerlinks' with '2' %}
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    {% if settings.footer_quicklinks_enable_2 %}
+                                        {% assign footerlinks_name = settings.footer_quicklinks_linklist_2 %}
+                                        {% assign footerlinks_title = settings.footer_quicklinks_title_2 %}
+                                        {% include 'block-footerlinks' with '3' %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="footernav" class="footer-nav">
+        <div class="container">
+          	{% if settings.footer_social_enable %}
+                  {% include 'block-social' %}
+              {% endif %}
+            <div id="powered" class="powered {% if settings.lazyload_enable %}wow animated {{ settings.lazyload_fcoppyright }}{% endif %}">
+              <p class="text-center">&copy; Copyright {{ "now" | date: "%Y" }} <strong>{{ shop.name }}.</strong></p>
+                <p class="text-center">{{ powered_by_link }}</p>
+            </div>
+          	
+        </div>
+    </section>
+</div>

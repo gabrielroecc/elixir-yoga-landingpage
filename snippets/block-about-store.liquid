@@ -1,0 +1,26 @@
+
+	<div class="col-md-6 col-lg-6 no-padding">
+      <div class="blockstore__left">
+        <div class="blockstore__left--logo">
+			{{ 'logo-store.png' | asset_url | img_tag: settings.footer_about_store_title, "img-responsive" }}
+		</div>
+        {% if settings.footer_about_store_title != blank %}
+        	<h4 class="blockstore__left--title" >{{ settings.footer_about_store_title }}</h4>
+		{% endif %}
+        {% if settings.footer_about_store_content != blank %}
+          <div class="blockstore__left--des">
+            {{ settings.footer_about_store_content }}
+          </div>
+        {% endif %}
+        {% if settings.footer_about_button != blank %}
+         <a class="blockstore__left--btn btn btn-outline-inverse" href="{{ settings.footer_aboutshop_link }}">
+           {{ settings.footer_about_button }}
+        </a>
+        {% endif %}
+      </div>
+	</div>
+  <div class="col-md-6 col-lg-6 no-padding">
+    <div class="blockstore_right">
+      {{ 'img-about.jpg' | asset_url | img_tag: settings.footer_about_store_title, "img-responsive" }}
+    </div>
+  </div>

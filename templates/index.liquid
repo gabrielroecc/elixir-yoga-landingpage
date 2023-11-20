@@ -1,0 +1,146 @@
+{% if settings.theme_onepage_use %}
+	{% layout 'theme.landingpage' %}
+    <div id="fullpage">
+      	{% if settings.page1_enable %}
+            <div class="section sectionOne" id="{{ settings.page1_id }}Apollo">
+                {% include 'landingpage-page1' %}
+            </div>
+      	{% endif %}
+      	{% if settings.page2_enable %}
+            <div class="section sectionTwo" id="{{ settings.page2_id }}Apollo">
+                {% include 'landingpage-page2' %}
+            </div>
+      	{% endif %}
+      	{% if settings.page3_enable %}
+            <div class="section sectionThree" id="{{ settings.page3_id }}Apollo">
+                {% include 'landingpage-page3' %}
+            </div>
+      	{% endif %}
+      	{% if settings.page4_enable %}
+            <div class="section sectionFour" id="{{ settings.page4_id }}Apollo">
+                {% include 'landingpage-page4' %}
+            </div>
+      	{% endif %}
+      	{% if settings.page5_enable %}
+            <div class="section sectionFive" id="{{ settings.page5_id }}Apollo">
+                {% include 'landingpage-page5' %}
+            </div>
+      	{% endif %}
+      	{% if settings.page6_enable %}
+            <div class="section sectionSix" id="{{ settings.page6_id }}Apollo">
+                {% include 'landingpage-page6' %}
+            </div>
+      	{% endif %}
+      	{% if settings.page7_enable %}
+            <div class="section sectionSeven" id="{{ settings.page7_id }}Apollo">
+                {% include 'landingpage-page7' %}
+            </div>
+      	{% endif %}
+      	{% if settings.page8_enable %}
+            <div class="section sectionEight" id="{{ settings.page8_id }}Apollo">
+                {% include 'landingpage-page8' %}
+            </div>
+      	{% endif %}
+	</div>
+{% else %}
+	<section id="columns" class="columns-container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12">
+            {% if settings.slider_home_enable %}
+            <section id="slideshow" class="clearfix"> 
+              {% include 'slideshow' %}
+            </section>
+            {% endif %}
+          </div>
+        </div>
+        <div class="row no-margin">
+            <div id="center_column" class="center_column col-md-12 no-padding">
+                <div class="center_wrap">
+                    <div class="row {% if settings.lazyload_enable %}wow animated {{ settings.lazyload_protop }}{% endif %}">
+                        <div class="products_top col-xs-12 col-sm-12">
+                            {% if settings.home_productlists1_enable %}
+                          		{% assign item_in_page = settings.home_productlists1_itempage | plus:0 %}
+                                {% assign columns_product = settings.home_productlists1_columntab | plus:0 %}
+                                {% assign product_in_tab = settings.home_productlists1_limit | plus:0 %}
+                          		{% assign title_block = settings.home_productlist1_titletab %}
+                          		{% assign title_block_sub = settings.home_productlist1_titletab_sub %}
+                          		{% assign interval = settings.home_productlists1_interval %}
+                          		{% assign type_block = settings.home_productlists1_type %}
+                          		{% assign collection_produclists = collections[settings.home_productlists1_collection].products %}
+                          		{% assign category_link = collections[settings.home_productlists1_collection].url %}
+                          		{% assign name_category = 'img_cate.jpg' %}
+                          		{% include 'block-productlist' with '01' %}
+                          		
+                          	{% endif %}
+                        </div>
+                    </div>
+                  	<div class="row no-margin blockstore {% if settings.lazyload_enable %}wow animated {{ settings.lazyload_protop }}{% endif %}">
+                      	{% if settings.home_about_store_enable %}
+                      		{% include 'block-about-store' %}
+                      	{% endif %}
+                  	</div>
+                  	<div class="row {% if settings.lazyload_enable %}wow animated {{ settings.lazyload_protop }}{% endif %}">
+                        <div class="col-xs-12 col-sm-12">
+                            {% if settings.home_productlists2_enable %}
+                          		{% assign item_in_page = settings.home_productlists2_itempage | plus:0 %}
+                                {% assign columns_product = settings.home_productlists2_columntab | plus:0 %}
+                                {% assign product_in_tab = settings.home_productlists2_limit | plus:0 %}
+                          		{% assign title_block = settings.home_productlist2_titletab %}
+                          		{% assign title_block_sub = settings.home_productlist2_titletab_sub %}
+                          		{% assign interval = settings.home_productlists2_interval %}
+                          		{% assign type_block = settings.home_productlists2_type %}
+                          		{% assign collection_produclists = collections[settings.home_productlists2_collection].products %}
+                          		{% assign category_link = collections[settings.home_productlists2_collection].url %}
+                          		{% assign name_category = 'img_cate_2.jpg' %}
+                          		{% include 'block-productlist' with '02' %}
+                          	{% endif %}
+                        </div>
+                    </div>
+                  	{% if settings.home_register_email_enable %}
+                  	<div class="blockemail">
+                      <div class="container">
+                        <div class="row {% if settings.lazyload_enable %}wow animated {{ settings.lazyload_protop }}{% endif %}"> 
+                            {% include 'block-newsletter' %}
+                        </div>
+                      </div>        	
+                    </div>
+                    {% endif %}
+                  	<div class="row {% if settings.lazyload_enable %}wow animated {{ settings.lazyload_protop }}{% endif %}">
+                        <div class="col-xs-12 col-sm-12">
+                            {% if settings.home_productlists3_enable %}
+                          		{% assign item_in_page = settings.home_productlists3_itempage | plus:0 %}
+                                {% assign columns_product = settings.home_productlists3_columntab | plus:0 %}
+                                {% assign product_in_tab = settings.home_productlists3_limit | plus:0 %}
+                          		{% assign title_block = settings.home_productlist3_titletab %}
+                          		{% assign title_block_sub = settings.home_productlist3_titletab_sub %}
+                          		{% assign interval = settings.home_productlists3_interval %}
+                          		{% assign type_block = settings.home_productlists3_type %}
+                          		{% assign collection_produclists = collections[settings.home_productlists3_collection].products %}
+                          		{% assign category_link = collections[settings.home_productlists3_collection].url %}
+                          		{% assign name_category = 'img_cate_3.jpg' %}
+                          		{% include 'block-productlist' with '03' %}
+                          	{% endif %}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 {% if settings.lazyload_enable %}wow animated {{ settings.lazyload_bloghome }}{% endif %}">
+                            {% if settings.home_blogs_enable %}
+                                {% include 'block-blog' with '01' %}
+                            {% endif %}
+                        </div>
+                    </div>
+                  <div class="row no-margin {% if settings.lazyload_enable %}wow animated {{ settings.lazyload_bloghome }}{% endif %}">
+                    <div class="col-md-6 no-padding">
+                      {% include 'block-testimonial' with '03' %}
+                    </div>
+                    <div class="col-md-6 no-padding">
+                      {% if settings.home_vendor_carousel_enable %}
+                      	{% include 'block-manucarousel' with '01' %}
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+            </div>
+      	</div>
+</section>
+{% endif %}

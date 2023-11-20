@@ -1,0 +1,192 @@
+
+{% assign productHome = collections.all.products.first %}
+{% assign count_images = productHome.images | size %}
+
+<section class="twoContainer">
+  <div id="header-main">
+        <div class="header-wrap">
+          <a href="/" itemprop="url">
+            <img class="logo-white" src="{{ 'logo.svg' | asset_url }}" alt="{{ shop.name }}" itemprop="logo">
+          </a>
+        </div> 
+    </div>
+  	<div class="container">
+      	<div class="row">
+          	<div class="product_box_1">
+              	<div class="boxApollo">
+                  	<p class="page-title">Conforto extremo na sua hora de Yoga</p>
+                  	<h3 class="apolloHeading">{{ productHome.title }}</h3>
+                  	<div class="apolloDescription">
+                      <div class="clearfix block__price">
+                        <span id="ProductPrice" class="{% if productHome.compare_at_price > productHome.price %} on-sale{% endif %}">
+                          {{ productHome.price | money }}
+                        </span>
+                        {% if productHome.compare_at_price > productHome.price %}
+                        <span class="price-product-detail">
+                          <span class="old-price product-price">{{ productHome.compare_at_price | money }}</span>
+                        </span>
+                        {% endif %}
+                      </div>
+                      <div class="product-description">
+                      {{ productHome.description | strip_html | truncatewords: 30 }}
+                      </div>
+                  	</div>
+              	</div>
+              	<div class="boxShopping">                 
+                    <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-ajaxtocart">
+                      <div class="proVariants clearfix">
+                        <select name="id" id="productSelect" class="product-single__variants">
+                          {% for variant in productHome.variants %}
+                          {% if variant.available %}
+                          <option {% if variant == productHome.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">{{ variant.title }}</option>
+                          {% else %}
+                          <option disabled="disabled">
+                            {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+                          </option>
+                          {% endif %}
+                          {% endfor %}
+                        </select>
+                        {% assign product = productHome %}
+                        {% for option in product.options %}
+                        {% include 'swatch-lip' with option %}
+                        {% endfor %}
+                      </div>
+                      <div class="quantity_wanted_p">
+                        <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector">
+                      </div>
+                      <button type="submit" name="add" id="AddToCart" class="btn btnAddtocart">
+                        <span id="AddToCartText">{{ 'products.product.add_to_cart' | t }}</span>
+                      </button>                      	                	
+                    </form>
+                  </div>
+          	</div>
+          	<div class="product_box_2">
+                <div id="image-block" class="clearfix">
+                  {% assign imagesize = "1024x1024" %}
+                  <span id="view_full_size">
+                    {% assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image %}
+                    <img id="proimage" class="img-responsive" itemprop="image" src="{{ featured_image | img_url: imagesize }}" alt="{{ product.title }}" data-zoom-image="{{ featured_image | img_url: '1024x1024' }}" />
+                  </span>
+                </div>
+                {% if count_images > 0 %}
+                <div id="views_block" class="clearfix hidden">
+                  <div id="thumbs_list">
+                    <div id="thumblist">
+                      {% for image in productHome.images %}
+                      <div id="thumbnail_{{ forloop.index }}" class="thumb_item {% if forloop.last %}last{% endif %}">
+                        <a href="javascript:void(0)" data-imageid="{{ image.id }}" data-image="{{ image.src | img_url: imagesize }}" data-zoom-image="{{ image.src | img_url: '1024x1024' }}"  title="{{ productHome.title }}">
+                          <img class="img-responsive" id="thumb_{{ forloop.index }}" src="{{ image.src | img_url: 'compact' }}" alt="{{ image.alt | escape }}" itemprop="image" />
+                        </a>
+                      </div>
+                      {% endfor %}
+                    </div>
+                  </div>
+                </div>
+                {% endif %}
+          	</div>
+      	</div>
+  	</div>
+</section>
+<script>
+    function selectCallback(variant, selector) {
+        var addToCart = jQuery("#AddToCart"),
+            productPrice = jQuery(".block__price #ProductPrice"),
+            comparePrice = jQuery(".block__price .price-product-detail .old-price");
+        if (variant) {
+            if (variant.available) {
+                // We have a valid product variant, so enable the submit button
+                addToCart.removeClass('disabled').removeAttr('disabled');
+                $(addToCart).find("span").text("{{ 'products.product.add_to_cart' | t }}");
+            } else {
+            	// Variant is sold out, disable the submit button
+            	addToCart.addClass('disabled').attr('disabled', 'disabled');
+                $(addToCart).find("span").text("{{ 'products.product.sold_out' | t }}");
+            }
+            // Regardless of stock, update the product price
+            productPrice.html(Shopify.formatMoney(variant.price, "{{ shop.money_format }}"));       
+            // Also update and show the product's compare price if necessary
+            if ( variant.compare_at_price > variant.price ) {
+                productPrice.addClass("sale-price")
+                comparePrice
+                .html(Shopify.formatMoney(variant.compare_at_price, "{{ shop.money_format }}"))
+                .show();          
+            } else {
+                comparePrice.hide();
+                productPrice.removeClass("sale-price");
+            }        
+            // BEGIN SWATCHES
+            var form = jQuery('#' + selector.domIdPrefix).closest('form');
+            for (var i=0,length=variant.options.length; i<length; i++) {
+                var radioButton = form.find('.swatch[data-option-index="' + i + '"] :radio[value="' + variant.options[i] +'"]');
+                if (radioButton.size()) {
+                    radioButton.get(0).checked = true;
+                }
+            }
+            // END SWATCHES
+		} else {
+			// The variant doesn't exist. Just a safeguard for errors, but disable the submit button anyway
+			addToCart.addClass('disabled').attr('disabled', 'disabled');
+			$(addToCart).find("span").text("{{ 'products.product.unavailable' | t }}");
+		}
+        /*begin variant image*/
+		if (variant && variant.featured_image) {
+            var originalImage = $("#view_full_size img");
+            var newImage = variant.featured_image;
+            var element = originalImage[0];
+            Shopify.Image.switchImage(newImage, element, function (newImageSizedSrc, newImage, element) {
+              	$('#thumblist img').each(function() {
+                  	var parentThumbImg = $(this).parent();
+                    var idProductImage = $(this).parent().data("imageid");
+                  	if (idProductImage == newImage.id) {
+                      	$(this).parent().trigger('click');
+                      	return false;
+                    }
+                });
+            });
+        }
+        /*end of variant image*/
+    };
+    $(document).ready(function() {
+        $('.more_info_block .page-product-heading li:first, .more_info_block .tab-content section:first').addClass('active');
+        $(document).on('click', '#thumblist .thumb_item a', function(){
+        if ($(this).attr('href'))
+        {
+          var new_src = $(this).data('image');
+          var new_title = $(this).attr('title');
+          var new_href = $(this).attr('href');
+          $("#thumblist").find(".thumb_item").removeClass("active");
+          $(this).parent().addClass("active");
+          if ($('#proimage').attr('src') != new_src)
+          {                  	
+            $('#proimage').attr({
+              'src' : new_src,
+              'alt' : new_title,
+              'title' : new_title
+            });                  	
+          }
+        }
+      });
+        new Shopify.OptionSelectors('productSelect', {
+            product: {{ productHome | json }},              
+            onVariantSelected: selectCallback,
+            enableHistoryState: true
+        });
+      	
+      	{% if productHome.available and productHome.options.size > 1 %}
+        	Shopify.linkOptionSelectors({{ productHome | json }});
+        {% endif %}
+        // Add label if only one product option and it isn't 'Title'. Could be 'Size'.
+        {% if productHome.options.size == 1 and productHome.options.first != 'Title' %}
+            $('.selector-wrapper:eq(0)').prepend('<label for="productSelect-option-0">{{ productHome.options.first | escape }}</label>');
+        {% endif %}
+        // Hide selectors if we only have 1 variant and its title contains 'Default'.
+        {% if productHome.variants.size == 1 and productHome.variants.first.title contains 'Default' %}
+             $('.selector-wrapper').hide();
+      		$('.swatch').hide();
+        {% endif %}   
+        {% if productHome.available == false %}
+            $("#AddToCart").addClass("disabled").attr("disabled", "disabled");
+            $("#AddToCartText").text("{{ 'products.product.unavailable' | t }}");
+        {% endif %}
+    });
+</script>

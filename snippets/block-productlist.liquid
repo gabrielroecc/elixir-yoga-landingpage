@@ -1,0 +1,98 @@
+{% unless title_block %}
+	{% assign title_block = '' %}
+{% endunless %}
+{% unless title_block_sub %}
+	{% assign title_block_sub = '' %}
+{% endunless %}
+{% unless interval %}
+	{% assign interval = 8000 %}
+{% endunless %}
+{% unless type_block %}
+	{% assign type_block = 'boostrap_carousel' %}
+{% endunless %}
+{% unless collection_produclists %}
+	{% assign collection_produclists = collections.all.products %}
+{% endunless %}
+{% unless name_category %}
+	{% assign name_category = 'banner_default.png' %}
+{% endunless %}
+{% unless category_link %}
+	{% assign category_link = '/collections/all' %}
+{% endunless %}
+<div id="productlist{{ block-productlist }}" class="products_block exclusive block" >
+  <div class="row">
+  	<div class="col-lg-2-4 col-md-12 col-sm-12 col-xs-12">
+      <div class="block_left effect">
+	{% if title_block != blank %}
+		<h4 class="page-subheading {% if block-productlist == 'sidebar' %}title_block{% endif %}">
+          <a href="{{ category_link }}" class="title--main">{{ title_block }}</a>
+          <a href="{{ category_link }}" class="title--sub"><span>{{ title_block_sub }}</span></a>
+		</h4>
+      	<a class="img--category" href="{{ category_link }}">
+          {{ name_category | asset_url | img_tag: "Adv Banner", "img-responsive" }}
+      </a>
+	{% endif %}
+      </div>
+    </div>
+  	<div class="col-lg-9-6 col-md-12 col-sm-12 col-xs-12 no-padding"> 
+      <div class="block_content">
+          {% if type_block == 'boostrap_carousel' %}
+              {% capture product_carousel %}product_list_00{{ block-productlist }}{% endcapture %}
+              {% include 'product-carousel' %}
+          {% else %}
+              {% include 'product-carousel-owl' %}
+          {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+	$(document).ready(function() {
+		{% if type_block == 'boostrap_carousel' %}
+	    $('#productlist{{ block-productlist }}').each(function(){
+	        $(this).carousel({
+	            pause: 'hover',
+	            interval: {{ interval }}
+	        });
+	    });
+	    {% else %}
+	    	$('#productlist{{ block-productlist }} .owl-carousel').each(function(){
+    		  	$(this).owlCarousel({
+    		      	items : {{ columns_product }},
+    		      	lazyLoad : true,
+    		      	navigation : true,
+	              	addClassActive: true,
+              		afterInit : SetOwlCarouselFirstLast,
+			        afterAction : SetOwlCarouselFirstLast,
+              		{% if columns_product == 1 %}
+              			itemsDesktop: [1199, 1],
+                        itemsDesktopSmall: [979, 2],
+                        itemsTablet: [768, 1],
+                        itemsTabletSmall: [480, 1],
+                        itemsMobile: [360, 1],
+              		{% elsif columns_product < 4 %}
+              			itemsDesktop: [1199, 2],
+                        itemsDesktopSmall: [979, 2],
+                        itemsTablet: [768, 2],
+                        itemsTabletSmall: [480, 1],
+                        itemsMobile: [360, 1],
+              		{% else %}
+              			itemsDesktop: [1199, 3],
+                        itemsDesktopSmall: [979, 2],
+                        itemsTablet: [768, 2],
+                        itemsTabletSmall: [480, 1],
+                        itemsMobile: [360, 1],
+              		{% endif %}
+              		navigationText : ["{{ 'products.carousel.preview' | t }}", "{{ 'products.carousel.next' | t }}"]
+		      	}); 
+    		});
+  			function SetOwlCarouselFirstLast(el){
+			  	el.find(".owl-item").removeClass("first");
+			  	el.find(".owl-item.active").first().addClass("first");
+
+			  	el.find(".owl-item").removeClass("last");
+			  	el.find(".owl-item.active").last().addClass("last");
+			};
+	    {% endif %}
+	});
+</script>

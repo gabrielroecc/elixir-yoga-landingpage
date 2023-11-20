@@ -1,0 +1,106 @@
+{% unless template == 'index' or template == 'cart' %}
+{% assign name = 'bg_image_v1.jpg' | asset_url  %}
+{% if template contains 'collection' and collection.handle %}
+	{% if collection.image %}
+		{% assign name =collection.image | img_url: 'master'  %}
+	{% endif %}
+{% elsif template contains 'product' and collection.handle %}
+  {% if collection.image %}
+  		{% assign name = collection.image | img_url: 'master'  %}
+  {% endif %}
+{% elsif template contains 'blog' or template contains 'article'   %}
+	{% assign name = 'bg_image_v2.jpg' | asset_url  %}
+{% elsif template contains 'page' %}
+	{% assign name = 'bg_image_va.jpg' | asset_url  %}
+{% else %}
+	{% assign name = 'bg_image_v1.jpg' | asset_url  %}
+ {% endif %}
+{% if template contains 'page' and page.handle == 'frontpage' %}
+	{% assign name = 'bg-contact.jpg' | asset_url  %}
+{% endif %}
+
+<section id="breadcrumbs"  style=" background:url({{name}}) center top repeat transparent; ">
+    <div class="container">
+      	{% if template contains 'collection' and collection.handle %}
+          <h1 class="page-heading product-listing cat-name name__collection text-center hidde-xs"><span >{{ collection.title }}</span></h1>
+        {% elsif template contains 'page' %}
+          <h1 class="page-heading product-listing cat-name name__collection text-center hidde-xs"><span >{{ page.title }}</span></h1>
+      	{% elsif template contains 'blog' %}
+          <h1 class="page-heading product-listing cat-name name__collection text-center hidde-xs"><span >{{ blog.title }}</span></h1>
+      	{% endif %}
+        <nav role="navigation" aria-label="breadcrumbs">
+            <ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+                <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                    <a href="/" title="{{ 'general.breadcrumbs.home_link_title' | t }}" itemprop="item">
+                        <span itemprop="name">{{ 'general.breadcrumbs.home' | t }}</span>
+                    </a>
+                </li>
+                {% if template contains 'product' %}
+                    {% if collection %}
+                        {% if collection.handle %}
+                            {% capture url %}/collections/{{ collection.handle }}{% endcapture %}
+                            <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                                <a href="{{ url }}" title="{{ collection.title }}" itemprop="item">
+                                    <span itemprop="name">{{ collection.title }}</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                    {% endif %}
+                    <li class="active" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                        <span itemprop="name">{{ product.title }}</span>
+                    </li>
+                {% elsif template contains 'collection' and collection.handle %}
+                    {% if current_tags %}
+                        {% capture url %}/collections/{{ collection.handle }}{% endcapture %}
+                        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                            <a href="{{ url }}" title="{{ collection.title }}" itemprop="item">
+                                <span itemprop="name">{{ collection.title }}</span>
+                            </a>
+                        </li>
+                        <li class="active" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                            <span itemprop="name">{{ current_tags | join: " + " }}</span>
+                        </li>
+                    {% else %}
+                        <li class="active" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                            <span itemprop="name">{{ collection.title }}</span>
+                        </li>
+                    {% endif %}
+                {% elsif template contains 'blog' %}
+                    {% if current_tags %}
+                        {{ blog.title | link_to: blog.url }}
+                        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                            <a href="{{ blog.url }}" title="{{ blog.title }}" itemprop="item">
+                                <span itemprop="name">{{ blog.title }}</span>
+                            </a>
+                        </li>
+                        <li class="active" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                            <span itemprop="name">{{ current_tags | join: " + " }}</span>
+                        </li>
+                    {% else %}
+                        <li class="active" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                           <span itemprop="name">{{ blog.title }} </span>
+                        </li>
+                    {% endif %}
+                {% elsif template contains 'article' %}
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                        <a href="{{ blog.url }}" title="{{ blog.title }}" itemprop="item">
+                            <span itemprop="name">{{ blog.title }}</span>
+                        </a>
+                    </li>
+                    <li class="active" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                        <span itemprop="name">{{ article.title }}</span>
+                    </li>
+                {% elsif template contains 'page' %}
+                    <li class="active" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                        <span itemprop="name">{{ page.title }}</span>
+                    </li>
+                {% else %}
+                    <li class="active" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                        <span itemprop="name">{{ page.title }}</span>
+                    </li>
+                {% endif %}
+            </ol>
+        </nav>
+    </div>
+</section>
+{% endunless %}

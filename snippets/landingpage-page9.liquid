@@ -1,0 +1,25 @@
+<section class="sevenContainer">
+    <div class="container">
+        <div class="row">
+            {% if settings.page9_enable %}
+          	{% if settings.newsletter_form_action != blank %}
+    			{% assign form_action = settings.newsletter_form_action %}
+			{% else %}
+    			{% assign form_action = '#' %}
+			{% endif %}
+            <div class="col-xs-12">
+              	<div class="boxApollo">
+                  	<h3 class="apolloHeading">{{ settings.page9_title }}</h3>
+                  	<div class="apolloDescription">{{ settings.page9_des }}</div>
+                    <form class="form_newsletter col-md-6" action="{{ form_action }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank">
+                      <input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="your email" name="EMAIL" id="mail" class="newsletter-input form-control" aria-label="{{ 'general.newsletter_form.newsletter_email' | t }}">
+                      <button id="subscribe" class="button_mini btn btn-outline" type="submit">
+                          <span>SIGN UP</span>
+                      </button>
+                	</form>
+              	</div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</section>

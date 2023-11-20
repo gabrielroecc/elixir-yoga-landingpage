@@ -1,0 +1,33 @@
+{% assign productHome = all_products[settings.page6_product] %}
+<section class="sixContainer">
+  	<div class="container">
+      	<div class="row">
+          	<div class="col-xs-12 col-sm-12">
+              <div class="boxApollo">
+                <h3 class="apolloHeading">{{ settings.page6_title }}</h3>
+                <div class="apolloDescription">
+                  {% if settings.gallery_slides_enable %}
+                  <div class="gallery row clearfix {% if settings.animated_enable %}wow animated {{ settings.animated_9 }}{% endif %}">
+                    {% for i in (1..8) %}
+                    {% assign image_gallery = 'image-gallery' | append: i | append: '.jpg' %}
+                    <div class="gallery-item no-padding col-xs-6 col-sm-3">
+                      <a class="prettyphoto" href="{{ image_gallery | asset_url }}" data-gal="prettyPhoto[gallery]">
+                        <img class="img-responsive" src="{{ image_gallery | asset_url }}" alt="galleryImage " />
+                      </a>
+                    </div>
+                    {% endfor %}
+                  </div>
+                  <script type="text/javascript">
+                    $(document).ready(function(){      
+                      $(".gallery a[data-gal^='prettyPhoto']").prettyPhoto({
+                        animation_speed:'normal',theme:'pp_default',slideshow:3000, autoplay_slideshow: false
+                      });
+                    });
+                  </script>
+                  {% endif %}
+                </div>
+              </div>
+          	</div>
+      	</div>
+  	</div>
+</section>
