@@ -48,7 +48,7 @@
         {{ 'fonts.scss.css' | asset_url | stylesheet_tag }}
       	{{ 'pe-icon-7-stroke.scss.css' | asset_url | stylesheet_tag }}
       	{{ 'prettyPhoto.scss.css' | asset_url | stylesheet_tag }}
-      	{{ 'master.scss.css' | asset_url | stylesheet_tag }}
+      	{% comment %} {{ 'master.scss.css' | asset_url | stylesheet_tag }} {% endcomment %}
         {{ content_for_header }}
         <link rel="stylesheet" href="../assets/custom.css">
         <link rel="stylesheet" href="../assets/mediaqueries.css">
