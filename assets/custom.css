@@ -1,3 +1,10 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	text-decoration: none;
+	scroll-behavior: smooth;
+}
 .container {
 	width: 100%;
 	max-width: 1440px;
@@ -25,7 +32,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	gap: 248px;
+	gap: 2rem;
 }
 
 .twoContainer #proimage,
@@ -38,37 +45,19 @@
 	display: block;
 }
 .product_box_1 {
-	max-width: 626px;
+	width: 100%;
+	max-width: 768px;
 }
 *::before,
 *::after {
 	display: none !important;
 }
-.swatch-element label {
-	width: 35px;
-	height: 35px;
-	font-size: 0;
-}
-.roxo label {
-	background-color: purple;
-}
-.verde label {
-	background-color: green;
-}
-.azul-claro label {
-	background-color: aqua;
-}
-.azul-escuro label {
-	background-color: darkblue;
-}
-.marrom label {
-	background-color: brown;
-}
-.lilas label {
-	background-color: plum;
-}
+
 .go_to_cart_area {
 	width: fit-content;
+	display: flex;
+	align-items: center;
+	gap: 1rem;
 }
 .apolloDescription {
 	padding: 0 !important;
@@ -79,12 +68,23 @@
 	justify-content: start;
 	flex-direction: column-reverse;
 	gap: 10px;
-	margin: 10px 0 40px 0 !important;
+	margin: 2rem 0 2rem 0;
 }
 .old-price {
 	text-decoration: line-through;
+	color: #1d1d1d;
+	font-family: Ubuntu;
+	font-size: 16px;
+	font-style: normal;
 }
-
+.sale-price {
+	color: #4063f8;
+	font-family: Ubuntu;
+	font-size: 48px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+}
 .product-description {
 	color: #1d1d1d;
 	font-family: Ubuntu;
@@ -92,15 +92,52 @@
 	font-style: normal;
 	font-weight: 400;
 	line-height: normal;
-	margin-bottom: 40px;
+	margin-bottom: 2rem;
+}
+.btnAddtocart {
+	display: flex;
+	width: fit-content;
+	height: 50px;
+	padding: 17px 29.654px 17px 30px;
+	justify-content: center;
+	align-items: center;
+	flex-shrink: 0;
+	border-radius: 3px;
+	background: #110c6c;
+	border: 0;
+	cursor: pointer;
+}
+.btnAddtocart span {
+	color: #fff;
+	text-align: center;
+	font-family: Ubuntu;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+	text-transform: uppercase;
 }
 .twoContainer #proimage,
 .twoContainer .product_box_2 {
 	border-radius: 8px;
 }
+#AddToCartForm {
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
+}
 #pageOneApollo .boxShopping #Quantity {
 	border-color: #1d1d1d;
 	color: #1d1d1d;
+	display: flex;
+	width: 60px;
+	height: 50px;
+	padding: 1rem 0 1rem 1rem;
+	justify-content: center;
+	align-items: center;
+	flex-shrink: 0;
+	border: 1px solid #1d1d1d;
+	outline: 0;
 }
 .sectionTwo .twoContainer {
 	background-image: initial !important;
@@ -108,6 +145,9 @@
 }
 .sectionTwo .twoContainer .container {
 	padding: 0;
+}
+.sectionTwo .twoContainer .container .row {
+	justify-content: center;
 }
 .text_head_1 {
 	color: #1d1d1d;
@@ -132,6 +172,8 @@
 	font-weight: 700;
 	line-height: normal;
 	text-transform: capitalize;
+	padding: 0;
+	margin: 2rem 0;
 }
 .swatch-desc {
 	color: #1d1d1d;
@@ -144,7 +186,146 @@
 	max-width: 626px;
 	margin: 0 auto 2rem auto !important;
 }
+.button-group {
+	text-align: center;
+}
 .btn-shopnow {
+	display: flex;
+	width: fit-content;
+	height: 50px;
+	padding: 17px 29.654px 17px 30px;
+	justify-content: center;
+	align-items: center;
+	flex-shrink: 0;
 	border-radius: 3px;
-	background: #110c6c !important;
+	background: #110c6c;
+	margin: 0 auto;
+	color: #fff;
+	text-align: center;
+	font-family: Ubuntu;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+	text-transform: uppercase;
+}
+#views_block {
+	display: none;
+}
+.proVariants {
+	position: relative;
+	margin-left: -15px;
+	margin-right: -15px;
+}
+.proVariants > div {
+	float: left;
+	width: 50%;
+	height: 70px;
+	padding: 0 15px;
+	margin: 0 0 0.5rem;
+}
+.swatch .swatch-element {
+	float: left;
+	-webkit-transform: translateZ(0);
+	-webkit-font-smoothing: antialiased;
+	margin: 0 10px 0 0;
+	position: relative;
+}
+.swatch .header {
+	margin: 0.5em 0;
+	visibility: hidden;
+}
+label {
+	display: inline-block;
+	margin-bottom: 5px;
+	font-weight: 700;
+}
+.proVariants label {
+	font-weight: 400;
+	color: #666;
+}
+.swatch label {
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	float: left;
+	min-width: 35px !important;
+	height: 35px !important;
+	-webkit-border-radius: 100%;
+	-moz-border-radius: 100%;
+	-ms-border-radius: 100%;
+	-o-border-radius: 100%;
+	border-radius: 100%;
+	margin: 0;
+	border: rgba(255, 255, 255, 0.4) 3px solid;
+	background-color: #ddd;
+	font-size: 13px;
+	text-align: center;
+	line-height: 35px;
+	white-space: nowrap;
+	text-transform: uppercase;
+}
+.swatch-element label {
+	width: 35px;
+	height: 35px;
+	font-size: 0;
+}
+.swatch-element label {
+	width: 35px;
+	height: 35px;
+	font-size: 0;
+}
+.swatch input:checked + label {
+	border-color: #fff;
+}
+.swatch input {
+	display: none;
+}
+.proVariants .selector-wrapper {
+	display: none;
+}
+img {
+	margin: 0 auto;
+	max-width: 100%;
+	height: auto;
+	display: block;
+}
+.crossed-out {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+}
+.swatch .swatch-element .crossed-out {
+	display: none;
+}
+.roxo label {
+	background-color: purple;
+}
+.verde label {
+	background-color: green;
+}
+.azul-claro label {
+	background-color: aqua;
+}
+.azul-escuro label {
+	background-color: darkblue;
+}
+.marrom label {
+	background-color: brown;
+}
+.lilas label {
+	background-color: plum;
+}
+.page-title {
+	color: #1d1d1d;
+	font-family: Ubuntu;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+	letter-spacing: 3.2px;
+	text-transform: uppercase;
+	padding: 0;
+	margin: 0;
 }

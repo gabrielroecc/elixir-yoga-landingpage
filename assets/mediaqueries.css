@@ -1,0 +1,19 @@
+@media (max-width: 1205px) {
+	.proVariants > div {
+		margin-bottom: 2rem;
+	}
+}
+@media (max-width: 1024px) {
+	.proVariants > div {
+		margin-bottom: 2rem;
+	}
+	.twoContainer .container .row {
+		flex-direction: column;
+		justify-content: center;
+		align-items: start;
+	}
+	.sectionTwo .container .row {
+		justify-content: center;
+		align-items: center;
+	}
+}

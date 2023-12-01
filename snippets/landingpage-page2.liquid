@@ -9,7 +9,7 @@
                       	<p class="swatch-desc">{{ settings.page2_description }}</p>
                         <p class="button-group">
                           {% comment %} <a href="{{ settings.page2_viewmore_link }}" class="btn btn-left btn-shopnow">{{ settings.page2_viewmore }}</a> {% endcomment %}
-                          <a href="{{ settings.page2_viewmore_link_2 }}" class="btn btn-right btn-shopnow">{{ settings.page2_viewmore_2 }}</a>
+                          <a href="#AddToCart" class="btn btn-right btn-shopnow">{{ settings.page2_viewmore_2 }}</a>
                       	</p>
                         {{ pages[settings.page2_page].content }}  
                     </div>
@@ -19,3 +19,9 @@
         </div>
     </div>
 </section> 
+<script>
+    document.querySelector('.btn-shopnow').addEventListener('click', function() {
+  window.scrollTo(0, 0);
+});
+
+</script>
