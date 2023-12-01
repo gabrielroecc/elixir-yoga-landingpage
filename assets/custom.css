@@ -1,119 +1,150 @@
 .container {
-  width: 100%;
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 0 10px;
+	width: 100%;
+	max-width: 1440px;
+	margin: 0 auto;
+	padding: 0 10px;
 }
 #pageOneApollo {
-  padding: 0;
-  background-image: none;
+	padding: 0;
+	background-image: none;
 }
 .twoContainer {
-  padding-bottom: 180px;
-  background-image: url("../assets/banner1.png");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+	padding-bottom: 180px;
+	background-image: url("../assets/banner1.png");
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 .twoContainer #header-main {
-  padding: 1rem;
+	padding: 1rem;
 }
 .twoContainer .container {
-  padding-top: 140px;
+	padding-top: 140px;
 }
 .twoContainer .container .row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 248px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 248px;
 }
 
 .twoContainer #proimage,
 .twoContainer .product_box_2 {
-  width: 100%;
-  max-width: 602px;
-  height: 500px !important;
-  object-fit: cover;
-  margin: 0;
-  display: block;
+	width: 100%;
+	max-width: 602px;
+	height: 500px !important;
+	object-fit: cover;
+	margin: 0;
+	display: block;
 }
 .product_box_1 {
-  max-width: 626px;
+	max-width: 626px;
 }
 *::before,
 *::after {
-  display: none !important;
+	display: none !important;
 }
 .swatch-element label {
-  width: 35px;
-  height: 35px;
-  font-size: 0;
+	width: 35px;
+	height: 35px;
+	font-size: 0;
 }
 .roxo label {
-  background-color: purple;
+	background-color: purple;
 }
 .verde label {
-  background-color: green;
+	background-color: green;
 }
 .azul-claro label {
-  background-color: aqua;
+	background-color: aqua;
 }
 .azul-escuro label {
-  background-color: darkblue;
+	background-color: darkblue;
 }
 .marrom label {
-  background-color: brown;
+	background-color: brown;
 }
 .lilas label {
-  background-color: plum;
+	background-color: plum;
 }
 .go_to_cart_area {
-  width: fit-content;
+	width: fit-content;
 }
 .apolloDescription {
-  padding: 0 !important;
+	padding: 0 !important;
 }
 #pageOneApollo .apolloDescription .block__price {
-  display: flex;
-  align-items: start;
-  justify-content: start;
-  flex-direction: column-reverse;
-  gap: 10px;
-  margin: 10px 0 40px 0 !important;
+	display: flex;
+	align-items: start;
+	justify-content: start;
+	flex-direction: column-reverse;
+	gap: 10px;
+	margin: 10px 0 40px 0 !important;
 }
 .old-price {
-  text-decoration: line-through;
+	text-decoration: line-through;
 }
-.apolloHeading {
-  color: #1d1d1d;
-  font-family: Ubuntu;
-  font-size: 48px;
-  font-style: normal;
-  font-weight: 700;
-  padding: 0px;
-  line-height: normal;
-}
+
 .product-description {
-  color: #1d1d1d;
-  font-family: Ubuntu;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  margin-bottom: 40px;
+	color: #1d1d1d;
+	font-family: Ubuntu;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	margin-bottom: 40px;
 }
 .twoContainer #proimage,
 .twoContainer .product_box_2 {
-  border-radius: 8px;
+	border-radius: 8px;
 }
 #pageOneApollo .boxShopping #Quantity {
-  border-color: #1d1d1d;
-  color: #1d1d1d;
+	border-color: #1d1d1d;
+	color: #1d1d1d;
 }
 .sectionTwo .twoContainer {
-  background-image: initial !important;
-  background-color: #fff;
+	background-image: initial !important;
+	background-color: #fff;
 }
 .sectionTwo .twoContainer .container {
-  padding: 0;
+	padding: 0;
+}
+.text_head_1 {
+	color: #1d1d1d;
+	font-family: Ubuntu;
+	font-size: 48px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+	padding: 5rem 0;
+	background-image: url(../assets/onebg.svg);
+	background-position: center;
+	background-repeat: no-repeat;
+}
+.section_icon_x {
+	padding-bottom: 5rem;
+}
+.apolloHeading {
+	color: #1d1d1d;
+	font-family: Ubuntu;
+	font-size: 48px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+	text-transform: capitalize;
+}
+.swatch-desc {
+	color: #1d1d1d;
+	text-align: center;
+	font-family: Ubuntu;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	max-width: 626px;
+	margin: 0 auto 2rem auto !important;
+}
+.btn-shopnow {
+	border-radius: 3px;
+	background: #110c6c !important;
 }

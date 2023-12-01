@@ -591,7 +591,8 @@ $alert-danger-border:         darken(adjust-hue($alert-danger-bg, -10), 5%);
 }
 #page{
   	position:relative;
-	max-width:1920px;
+    width:100%;
+    max-width:100%;
   	margin:0px auto;
   	overflow:hidden;
   	@include transition(all 0.2s ease-out);
@@ -848,14 +849,6 @@ $megamenu-sub-bg-color:                 {{ settings.apollo_megamenu_bgsub }};
     float:none;
     display:inline-block;
     vertical-align:middle;
-}
-.apolloHeading{
-	font-family:$font-family-tertiary;
-  	font-weight:bold;
-  	font-size:40px;
-  	color: $theme-title-color-1;
-  	margin:0px;
-  	padding:20px 0px;
 }
 .priceProduct{
 	display:inline-block;
@@ -1115,9 +1108,6 @@ $btnpage6-textcolor:{{ settings.page6_btn_textcolor }};
 }
 .blockTestimonial{
   	text-align:center;
-  	.apolloHeading{
-    	text-align:center;
-    }
   	.apolloDescription{
       	max-width:780px;
       	@include inline-block;
@@ -1296,7 +1286,6 @@ $btnpage6-textcolor:{{ settings.page6_btn_textcolor }};
       	&.sectionThree{background-image:none!important;}
     }
   	.oneContainer{padding:0px 20px;}
-  	.apolloHeading, .productContent h2{font-size:30px;}
   	.proListImage{height:auto;padding:0px;}
   	.boxImageDes{height:auto;max-width:100%;}
 }
@@ -1330,18 +1319,13 @@ table {
   }
   .page-title {
   	color: #1D1D1D;
-font-family: Ubuntu;
-font-size: 16px;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
-letter-spacing: 3.2px;
-text-transform: uppercase;
-  }
-  .apolloHeading {
-    padding-top: 0;
-  	font-size: 50px;
-    text-transform: none;
+    font-family: Ubuntu;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 3.2px;
+    text-transform: uppercase;
   }
   .apolloDescription {
     .block__price {
@@ -1378,7 +1362,6 @@ text-transform: uppercase;
     text-align: center;
     line-height: 70px;
     color: $white;
-    font-size: 30px;
     background: $theme-bgbutton-color-1;
     @include rounded-corners(50%);
   }
@@ -1387,9 +1370,8 @@ text-transform: uppercase;
     h3 {
       position: relative;
       text-align: center;
-      font-size: 30px;
       text-transform: none;
-      padding-bottom: 22px;
+       
       z-index: 4;
       span {
       	color: $theme-title-color-2;
@@ -1420,11 +1402,7 @@ text-transform: uppercase;
     .apolloDescription {
       padding-top: 110px;
       color: $theme-text-color-2;
-      .swatch-desc {
-      	width: 80%;
-        text-align: center;
-        margin: 0 auto;
-      }
+      
       .groupService {
         padding: 128px 0;
         .group-left {
@@ -1498,9 +1476,8 @@ text-transform: uppercase;
     h3 {
       position: relative;
       text-align: center;
-      font-size: 30px;
       text-transform: none;
-      padding-bottom: 22px;
+       
       z-index: 4;
       span {
         color: $theme-title-color-2;
@@ -1574,9 +1551,8 @@ text-transform: uppercase;
   	h3 {
       position: relative;
       text-align: center;
-      font-size: 30px;
       text-transform: none;
-      padding-bottom: 22px;
+       
       z-index: 4;
       span {
         color: $theme-title-color-2;
@@ -1656,9 +1632,8 @@ text-transform: uppercase;
     h3 {
       position: relative;
       text-align: center;
-      font-size: 30px;
       text-transform: none;
-      padding-bottom: 22px;
+       
       z-index: 4;
       span {
         color: $theme-title-color-2;
@@ -1695,6 +1670,7 @@ text-transform: uppercase;
     color: $theme-title-color-2;
   }
   .apolloHeading {
+    
     position: relative;
     &:before {
       position: absolute;
@@ -1726,7 +1702,6 @@ text-transform: uppercase;
     h3 {
       position: relative;
       text-align: left;
-      font-size: 30px;
       text-transform: none;
       padding-bottom: 91px;
       z-index: 4;
@@ -1932,10 +1907,6 @@ text-transform: uppercase;
       padding-top: 426px;
       padding-bottom: 140px;
       text-align: center;
-      h3.apolloHeading {
-        color: $theme-title-color-2;
-        font-size: 35px;
-      }
       .apolloDescription {
         padding-top: 35px;
         width: 66.6666666%;
@@ -2066,10 +2037,6 @@ text-transform: uppercase;
     #pageOneApollo {
       .boxApollo {
         padding-top: 145px;
-        .apolloHeading {
-          font-size: 40px;
-          line-height: 50px;
-        }
       }
     }
     
@@ -2084,11 +2051,6 @@ text-transform: uppercase;
     #pageOneApollo {
       .boxApollo {
         padding-top: 88px;
-        .apolloHeading {
-          font-size: 35px;
-          line-height: 50px;
-          padding-bottom: 10px;
-        }
         .apolloDescription {
           font-size: 14px;
           padding-bottom: 25px;
@@ -2190,12 +2152,6 @@ text-transform: uppercase;
     #pageOneApollo {
       .boxApollo {
         padding-top: 30px;
-        .apolloHeading {
-          font-size: 25px;
-          line-height: 40px;
-          padding-bottom: 10px;
-          
-        }
         .apolloDescription {
             padding-top: 0;
             padding-bottom: 20px;
@@ -2235,10 +2191,6 @@ text-transform: uppercase;
       .boxApollo {
         padding-top: 50px;
         padding-bottom: 20px;
-        .apolloHeading {
-          padding-bottom: 15px;
-          font-size: 25px;
-        }
         .apolloDescription {
           padding-top: 30px;
         }
@@ -2302,7 +2254,6 @@ text-transform: uppercase;
           top: 250px;
           table {
             .price-app {
-              font-size: 30px;
             }
           }
           .col-sm-4 {
@@ -2315,10 +2266,6 @@ text-transform: uppercase;
       .boxApollo {
         padding-top: 386px;
         padding-bottom: 75px;
-        h3.apolloHeading {
-          font-size: 25px;
-          padding-bottom: 15px;
-        }
         .apolloDescription {
           padding-top: 30px;
         }
@@ -2379,7 +2326,6 @@ text-transform: uppercase;
         padding-top: 120px;
         padding-bottom: 80px;
         h3 {
-          font-size: 30px;
         }
       }
     }
