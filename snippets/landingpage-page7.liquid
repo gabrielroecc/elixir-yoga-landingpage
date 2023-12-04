@@ -1,79 +1,74 @@
 <section class="sevenContainer">
   <div class="container">
-    <div class="boxApollo row">
-      <h3 class="apolloHeading">{{ settings.page7_title }}</h3>
-      <div class="col-xs-12 col-md-6">
-        {% assign min_height = '280px' %}
-        {% include 'block-google-map' %}
-        <ul class="contact-us">
-          {% if settings.contact_infor_address != blank %}
-          <li class="address">
-            <i class="pe-7s pe-7s-map-marker pull-left">&nbsp;</i>
-            <span>{{ settings.contact_infor_address }}</span>
-          </li>
-          {% endif %}
-          {% if settings.contact_infor_phone != blank %}
-          <li class="phone">
-            <i class="pe-7s pe-7s-headphones pull-left">&nbsp;</i>
-            <span>{{ settings.contact_infor_phone }}</span>
-          </li>
-          {% endif %}
-          {% if settings.contact_infor_email != blank %}
-          <li class="email">                     
-            <i class="pe-7s pe-7s-paper-plane pull-left">&nbsp;</i>
-            <span>{{ settings.contact_infor_email }}</span>
-          </li>
-          {% endif %}
-        </ul>
+    <div class="text_contat">
+      <div class="title_section">
+        Lorem ipsum dolor sit amet
       </div>
-      <div class="col-xs-12 col-md-6">
-        <div class="apolloContact row">
-          {% form 'contact' %}
-          {% if form.posted_successfully? %}
-          <p class="alert alert-success">
-            {{ 'contact.form.post_success' | t }}
-          </p>
-          {% endif %}
-          {{ form.errors | default_errors }}
-          <div class="col-xs-12 col-sm-6">
-            <div class="form-group">
-              {% assign name_attr = 'contact.form.name' | t | handle %}
-              <label for="ContactFormName" class="label--hidden">{{ 'contact.form.name' | t }}</label>
-              <input class="form-control grey" type="text" id="ContactFormName" name="contact[{{ name_attr }}]" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.name }}{% endif %}">
+      <div class="apolloContact row contact_wrapper">
+            {% form 'contact' %}
+            {% if form.posted_successfully? %}
+            <p class="alert alert-success">
+              {{ 'contact.form.post_success' | t }}
+            </p>
+            {% endif %}
+            {{ form.errors | default_errors }}
+            <div class="col-xs-12 col-sm-6 ">
+              <div class="form-group">
+                {% assign name_attr = 'contact.form.name' | t | handle %}
+                <label for="ContactFormName" class="label--hidden">{{ 'contact.form.name' | t }}</label>
+                <input class="form-control grey" type="text" id="ContactFormName" name="contact[{{ name_attr }}]" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.name }}{% endif %}">
+              </div>
             </div>
-          </div>
-          <div class="col-xs-12 col-sm-6">
-            <div class="form-group">
-              <label for="ContactFormEmail" class="label--hidden">{{ 'contact.form.email' | t }}</label>
-              <input class="form-control grey" type="email" id="ContactFormEmail" name="contact[email]" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}">
+            <div class="col-xs-12 col-sm-6">
+              <div class="form-group">
+                <label for="ContactFormEmail" class="label--hidden">{{ 'contact.form.email' | t }}</label>
+                <input class="form-control grey" type="email" id="ContactFormEmail" name="contact[email]" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}">
+              </div>
             </div>
-          </div>
-          <div class="col-xs-12 col-sm-6">
-            <div class="form-group">
-              {% assign name_attr = 'contact.form.phone' | t | handle %}
-              <label for="ContactFormPhone" class="label--hidden">{{ 'contact.form.phone' | t }}</label>
-              <input class="form-control grey" type="tel" id="ContactFormPhone" name="contact[{{ name_attr }}]" pattern="[0-9\-]*" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.phone }}{% endif %}">
+            <div class="col-xs-12 col-sm-6">
+              <div class="form-group">
+                {% assign name_attr = 'contact.form.phone' | t | handle %}
+                <label for="ContactFormPhone" class="label--hidden">{{ 'contact.form.phone' | t }}</label>
+                <input class="form-control grey" type="tel" id="ContactFormPhone" name="contact[{{ name_attr }}]" pattern="[0-9\-]*" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.phone }}{% endif %}">
+              </div>
             </div>
-          </div>
-          <div class="col-xs-12 col-sm-6">
-            <div class="form-group">
-              {% assign name_attr = 'contact.form.website' | t | handle %}
-              <label for="ContactFormWebsite" class="label--hidden">{{ 'contact.form.website' | t }}</label>
-              <input class="form-control grey" type="text" id="ContactFormWebsite" name="contact[{{ name_attr }}]" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.phone }}{% endif %}">
+            {% comment %} <div class="col-xs-12 col-sm-6">
+              <div class="form-group">
+                {% assign name_attr = 'contact.form.website' | t | handle %}
+                <label for="ContactFormWebsite" class="label--hidden">{{ 'contact.form.website' | t }}</label>
+                <input class="form-control grey" type="text" id="ContactFormWebsite" name="contact[{{ name_attr }}]" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.phone }}{% endif %}">
+              </div>
             </div>
-          </div>
-          <div class="col-xs-12 col-sm-12">
-            <div class="form-group">
-              <label for="ContactFormMessage" class="label--hidden">{{ 'contact.form.message' | t }}</label>
-              <textarea class="form-control" rows="8" id="ContactFormMessage" name="contact[body]">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+            <div class="col-xs-12 col-sm-12">
+              <div class="form-group">
+                <label for="ContactFormMessage" class="label--hidden">{{ 'contact.form.message' | t }}</label>
+                <textarea class="form-control" rows="8" id="ContactFormMessage" name="contact[body]">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+              </div>
+            </div> {% endcomment %}
+            <div class="col-xs-12 col-sm-12">
+              <button id="subscribe" class="button_mini pull-right btn btn-outline" type="submit">{{ 'contact.form.send' | t }}</button>
             </div>
+            {% endform %}
           </div>
-          <div class="col-xs-12 col-sm-12">
-            <button id="subscribe" class="button_mini pull-right btn btn-outline" type="submit">{{ 'contact.form.send' | t }}</button>
-          </div>
-          {% endform %}
-        </div>
+    </div>
+
+    <div class="info_wrapper">
+      <div class="info">
+        <img src="../assets/iconpin.svg" alt="">
+        <p>Galaxy Tower - 228b Baker Street -
+          London - United Kingdom</p>
       </div>
+      <div class="info">
+        <img src="../assets/iconcontact.svg" alt="">
+        <p>(+84). 123. 456. 789<br>
+          (+84). 123. 456. 789</p>
+      </div>
+      <div class="info">
+        <img src="../assets/iconemail.svg" alt="">
+        <p>Nosso email info@centershop.com</p>
+      </div>
+
+    
     </div>
   </div>
 </section>

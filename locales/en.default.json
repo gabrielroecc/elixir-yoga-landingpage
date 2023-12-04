@@ -79,15 +79,15 @@
 	},
 	"cart": {
 		"general": {
-			"title": "Shopping Cart",
+			"title": "Meu carrinho",
 			"remove": "Remove",
 			"note": "Special instructions for seller",
 			"subtotal": "Subtotal",
 			"shipping_at_checkout": "Shipping & taxes calculated at checkout",
-			"update": "Update Cart",
+			"update": "Atualizar Carrinho",
 			"checkout": "Check Out",
-			"empty": "Your cart is currently empty.",
-			"continue_browsing_html": "Continue shopping <a href=\"/collections/all\">here</a>.",
+			"empty": "Seu carrinho está vazio",
+			"continue_browsing_html": "Coloque nosso item no seu carrinho <a href=\"/\">AQUI</a>.",
 			"continue_shopping": "Continue shopping",
 			"view_cart": "View Cart",
 			"close_cart": "Close Cart"
@@ -139,7 +139,7 @@
 			"website": "Website",
 			"phone": "Phone Number",
 			"message": "Message",
-			"send": "Send message",
+			"send": "ENVIAR",
 			"post_success": "Thanks for contacting us. We'll get back to you as soon as possible."
 		}
 	},
@@ -266,7 +266,7 @@
 	"layout": {
 		"landingpage": { "scroll_text": "scroll down for more" },
 		"cart": {
-			"title": "Shopping cart",
+			"title": "Meu carrinho",
 			"items_count": { "one": "item", "other": "items" }
 		},
 		"customer": {

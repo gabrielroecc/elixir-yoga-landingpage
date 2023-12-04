@@ -11,11 +11,11 @@
                 {% include 'landingpage-page2' %}
             </div>
       	{% endif %}
-      	{% if settings.page3_enable %}
+      	{% comment %} {% if settings.page3_enable %}
             <div class="section sectionThree" id="{{ settings.page3_id }}Apollo">
                 {% include 'landingpage-page3' %}
             </div>
-      	{% endif %}
+      	{% endif %} {% endcomment %}
       	{% if settings.page4_enable %}
             <div class="section sectionFour" id="{{ settings.page4_id }}Apollo">
                 {% include 'landingpage-page4' %}
@@ -26,17 +26,19 @@
                 {% include 'landingpage-page5' %}
             </div>
       	{% endif %}
-      	{% if settings.page6_enable %}
+       {% comment %} {% if settings.page6_enable %}
             <div class="section sectionSix" id="{{ settings.page6_id }}Apollo">
                 {% include 'landingpage-page6' %}
             </div>
-      	{% endif %}
+      	{% endif %} {% endcomment %}
       	{% if settings.page7_enable %}
             <div class="section sectionSeven" id="{{ settings.page7_id }}Apollo">
                 {% include 'landingpage-page7' %}
             </div>
       	{% endif %}
-      	{% if settings.page8_enable %}
+
+        
+      {% if settings.page8_enable %}
             <div class="section sectionEight" id="{{ settings.page8_id }}Apollo">
                 {% include 'landingpage-page8' %}
             </div>

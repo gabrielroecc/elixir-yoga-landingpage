@@ -1,79 +1,26 @@
 <section class="fiveContainer">
   	<div class="container">
-      	<div class="row">
-          	{% if settings.testimonials_enable %}
-                <div class="col-xs-12">
-                    {% assign tesInPage = settings.testimonials_itempage | plus:0 %}
-                    {% assign tesColumns = settings.testimonials_columntab | plus:0 %}
-                    {% assign titleBlock = settings.testimonials_title %}
-                  	{% assign desBlock = settings.testimonials_des %}
-                    {% assign isAvatar = settings.testimonials_useavatar %}
-                    {% assign id = "" %}
-                    <div id="testimonials" class="blockTestimonial boxApollo">
-                        <h3 class="apolloHeading">{{ titleBlock }}</h3>
-                      	<div class="apolloDescription">{{ desBlock }}</div>
-                        <div class="blockContent">
-                            <div class="owl-row">
-                                <div class="owl-carousel">
-                                    {% for i in (1..10) %}
-                                        {% capture itemEnable %}testimonials_item{{ i }}_enable{% endcapture %}
-                                        {% capture itemAvatar %}testimonial_{{ i }}.png{% endcapture %}
-                                        {% capture itemName %}testimonials_item{{ i }}_name{% endcapture %}
-                                        {% capture itemRaing %}testimonials_item{{ i }}_star{% endcapture %}
-                                        {% capture itemReview %}testimonials_item{{ i }}_review{% endcapture %}
-                                        {% capture itemLink %}testimonials_item{{ i }}_link{% endcapture %}
-                                        {% capture itemReadmore %}testimonials_item{{ i }}_readmore{% endcapture %}
-                                        {% if settings[itemEnable] %}
-                                            <div class="item">
-                                                {% include 'testimonial-item' %}
-                                            </div>
-                                        {% endif %}
-                                    {% endfor %}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <script type="text/javascript">
-                        $(document).ready(function() {
-                            $('#testimonials .owl-carousel').each(function(){
-                                $(this).owlCarousel({
-                                    items : {{ tesColumns }},
-                                  	{% if tesColumns < 3 %}
-                                        itemsDesktop: [1199, 1],
-                                        itemsDesktopSmall: [979, 1],
-                                        itemsTablet: [768, 1],
-                                        itemsTabletSmall: [480, 1],
-                                        itemsMobile: [360, 1],
-                                    {% elsif tesColumns < 4 %}
-                                        itemsDesktop: [1199, 2],
-                                        itemsDesktopSmall: [979, 2],
-                                        itemsTablet: [768, 2],
-                                        itemsTabletSmall: [480, 1],
-                                        itemsMobile: [360, 1],
-                                    {% else %}
-                                        itemsDesktop: [1199, 3],
-                                        itemsDesktopSmall: [979, 2],
-                                        itemsTablet: [768, 2],
-                                        itemsTabletSmall: [480, 1],
-                                        itemsMobile: [360, 1],
-                                    {% endif %}
-                                    lazyLoad : true,
-                                    slideSpeed : 1000,
-                                    paginationSpeed : 800,
-                                    rewindSpeed : 1000,
-                                    {% if settings.testimonials_autoplay %}
-                                        autoPlay : {{ settings.testimonials_speed }},
-                                    {% else %}
-                                        autoPlay : false,
-                                    {% endif %}
-                                    stopOnHover : true,
-                                    navigation : false
-                                }); 
-                            });
-                        });
-                    </script>
-                </div>
-          	{% endif %}
-      	</div>
+        <div class="boxApollo">
+            <h3 class="text_head_1">{{ settings.page2_title }}</h3>
+            <img class="section_icon_x" src="../assets/iconx.svg" alt="">
+           
+        </div>
+
+        <div class="image_with_tag_container">
+            <div class="image_tag tag1">
+              <p>All-Day Activity</p>
+              <img src="../assets/linetag.svg" alt="">
+            </div>
+            <img src="../assets/imagecenter2.png" alt="">
+            <div class="image_tag tag2">
+                <p>All-Day Activity</p>
+                <img src="../assets/linetag.svg" alt="">
+              </div>
+
+              <div class="image_tag tag3">
+                <p>All-Day Activity</p>
+                <img src="../assets/linetag.svg" alt="">
+              </div>
+        </div>
   	</div>
 </section>

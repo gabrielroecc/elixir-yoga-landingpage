@@ -51,7 +51,8 @@
       	{{ 'custom.css' | asset_url | stylesheet_tag }}
         {{ content_for_header }}
         <link rel="stylesheet" href="../assets/custom.css">
-        <link rel="stylesheet" href="../assets/mediaqueries.css">
+       
+        <link href="https://fonts.cdnfonts.com/css/ubuntu" rel="stylesheet"> <link rel="stylesheet" href="../assets/mediaqueries.css">
 </head>
     <body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
       	<section id="page" class="pageContainer">
