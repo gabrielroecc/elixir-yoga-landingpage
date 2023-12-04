@@ -95,17 +95,17 @@
             comparePrice = jQuery(".block__price .price-product-detail .old-price");
         if (variant) {
             if (variant.available) {
-                // We have a valid product variant, so enable the submit button
+                //We have a valid product variant, so enable the submit button
                 addToCart.removeClass('disabled').removeAttr('disabled');
                 $(addToCart).find("span").text("{{ 'products.product.add_to_cart' | t }}");
             } else {
-            	// Variant is sold out, disable the submit button
+            	//Variant is sold out, disable the submit button
             	addToCart.addClass('disabled').attr('disabled', 'disabled');
                 $(addToCart).find("span").text("{{ 'products.product.sold_out' | t }}");
             }
-            // Regardless of stock, update the product price
+            //Regardless of stock, update the product price
             productPrice.html(Shopify.formatMoney(variant.price, "{{ shop.money_format }}"));       
-            // Also update and show the product's compare price if necessary
+            //Also update and show the product's compare price if necessary
             if ( variant.compare_at_price > variant.price ) {
                 productPrice.addClass("sale-price")
                 comparePrice
@@ -115,7 +115,7 @@
                 comparePrice.hide();
                 productPrice.removeClass("sale-price");
             }        
-            // BEGIN SWATCHES
+            //BEGIN SWATCHES
             var form = jQuery('#' + selector.domIdPrefix).closest('form');
             for (var i=0,length=variant.options.length; i<length; i++) {
                 var radioButton = form.find('.swatch[data-option-index="' + i + '"] :radio[value="' + variant.options[i] +'"]');
@@ -123,9 +123,9 @@
                     radioButton.get(0).checked = true;
                 }
             }
-            // END SWATCHES
+            //END SWATCHES
 		} else {
-			// The variant doesn't exist. Just a safeguard for errors, but disable the submit button anyway
+			//The variant doesn't exist. Just a safeguard for errors, but disable the submit button anyway
 			addToCart.addClass('disabled').attr('disabled', 'disabled');
 			$(addToCart).find("span").text("{{ 'products.product.unavailable' | t }}");
 		}
@@ -176,11 +176,11 @@
       	{% if productHome.available and productHome.options.size > 1 %}
         	Shopify.linkOptionSelectors({{ productHome | json }});
         {% endif %}
-        // Add label if only one product option and it isn't 'Title'. Could be 'Size'.
+        //Add label if only one product option and it isn't 'Title'. Could be 'Size'.
         {% if productHome.options.size == 1 and productHome.options.first != 'Title' %}
             $('.selector-wrapper:eq(0)').prepend('<label for="productSelect-option-0">{{ productHome.options.first | escape }}</label>');
         {% endif %}
-        // Hide selectors if we only have 1 variant and its title contains 'Default'.
+        //Hide selectors if we only have 1 variant and its title contains 'Default'.
         {% if productHome.variants.size == 1 and productHome.variants.first.title contains 'Default' %}
              $('.selector-wrapper').hide();
       		$('.swatch').hide();
