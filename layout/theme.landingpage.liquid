@@ -50,9 +50,9 @@
       	{{ 'prettyPhoto.scss.css' | asset_url | stylesheet_tag }}
       	{{ 'custom.css' | asset_url | stylesheet_tag }}
         {{ content_for_header }}
-        <link rel="stylesheet" href="/cdn/shop/t/6/assets/image-center.pngcustom.css">
+        <link rel="stylesheet" href="../assetsimage-center.pngcustom.css">
        
-        <link href="https://fonts.cdnfonts.com/css/ubuntu" rel="stylesheet"> <link rel="stylesheet" href="/cdn/shop/t/6/assets/image-center.pngmediaqueries.css">
+        <link href="https://fonts.cdnfonts.com/css/ubuntu" rel="stylesheet"> <link rel="stylesheet" href="../assetsimage-center.pngmediaqueries.css">
 </head>
     <body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
       	<section id="page" class="pageContainer">
