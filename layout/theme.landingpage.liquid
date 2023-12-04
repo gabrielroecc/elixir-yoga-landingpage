@@ -45,9 +45,9 @@
         {% if settings.theme_font_family_senary contains 'Google' %}
             <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family={{ settings.theme_font_family_senary | remove: 'Google+' }}:300,400,700">
         {% endif %}
-        {{ 'fonts.scss.css' | asset_url | stylesheet_tag }}
-      	{{ 'pe-icon-7-stroke.scss.css' | asset_url | stylesheet_tag }}
-      	{{ 'prettyPhoto.scss.css' | asset_url | stylesheet_tag }}
+        {{ 'custom.css' | asset_url | stylesheet_tag }}
+      	{{ 'custom.css' | asset_url | stylesheet_tag }}
+      	{{ 'custom.css' | asset_url | stylesheet_tag }}
       	{{ 'custom.css' | asset_url | stylesheet_tag }}
         {{ content_for_header }}
         <link rel="stylesheet" href="../assets/custom.css">
