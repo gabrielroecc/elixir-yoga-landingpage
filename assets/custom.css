@@ -17,7 +17,7 @@
 }
 .twoContainer {
 	padding-bottom: 180px;
-	background-image: url("../assets/banner1.png");
+	background-image: url("/cdn/shop/t/6/assets/image-center.pngbanner1.png");
 	background-position: center;
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -157,7 +157,7 @@
 	font-weight: 700;
 	line-height: normal;
 	padding: 5rem 0;
-	background-image: url(../assets/onebg.svg);
+	background-image: url(/cdn/shop/t/6/assets/image-center.pngonebg.svg);
 	background-position: center;
 	background-repeat: no-repeat;
 }
@@ -387,7 +387,7 @@ img {
 	text-align: center;
 }
 .fiveContainer .container .boxApollo .text_head_1 {
-	background-image: url("../assets/iconsection2.svg");
+	background-image: url("/cdn/shop/t/6/assets/image-center.pngiconsection2.svg");
 	margin-top: 10rem;
 }
 .image_with_tag_container {
@@ -459,7 +459,7 @@ img {
 	font-weight: 700;
 	line-height: normal;
 	padding: 5rem 0;
-	background-image: url(../assets/Contato.svg);
+	background-image: url(/cdn/shop/t/6/assets/image-center.pngContato.svg);
 	background-position: center;
 	background-repeat: no-repeat;
 }
